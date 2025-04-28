@@ -2,7 +2,7 @@
 
 ## Live demo
 
-Check the live demo here 👉️ [https://github.com/Rdemora2](https://github.com/Rdemora2)
+Check the live demo here 👉️ [Vercel Production Deploy](https://front-site-inovalabs-technologies.vercel.app/)
 
 ## Usage
 
