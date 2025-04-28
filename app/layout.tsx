@@ -1,6 +1,7 @@
 import "./css/style.css";
 
 import { Inter, Architects_Daughter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import Header from "@/components/ui/header";
 
@@ -136,6 +137,7 @@ export default function RootLayout({
             }),
           }}
         />
+        <SpeedInsights />
       </body>
     </html>
   );
