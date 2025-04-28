@@ -21,7 +21,9 @@ const architects_daughter = Architects_Daughter({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://inovalabs.com.br"),
+  metadataBase: new URL(
+    "https://front-site-inovalabs-technologies.vercel.app/"
+  ),
   title: {
     default: "Inovalabs Technologies | Desenvolvimento Web, Mobile e IA",
     template: "%s | Inovalabs Technologies",
@@ -76,7 +78,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://inovalabs.com.br",
+    url: "https://front-site-inovalabs-technologies.vercel.app/",
     siteName: "Inovalabs Technologies",
     title: "Inovalabs Technologies | Soluções Digitais Inovadoras",
     description:
@@ -91,7 +93,7 @@ export const metadata = {
     ],
   },
   alternates: {
-    canonical: "https://inovalabs.com.br",
+    canonical: "https://front-site-inovalabs-technologies.vercel.app/",
   },
 };
 
@@ -138,8 +140,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "Inovalabs Technologies",
-              url: "https://inovalabs.com.br",
-              logo: "https://inovalabs.com.br/images/logo-inovalabs-full.png",
+              url: "https://front-site-inovalabs-technologies.vercel.app/",
+              logo: "https://front-site-inovalabs-technologies.vercel.app//images/logo-inovalabs-full.png",
               description:
                 "Desenvolvimento de soluções tecnológicas personalizadas com foco em web, mobile e inteligência artificial.",
               contactPoint: {

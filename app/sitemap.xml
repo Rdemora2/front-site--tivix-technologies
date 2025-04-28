@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://inovalabs.com.br',
+      url: 'https://front-site-inovalabs-technologies.vercel.app/',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,

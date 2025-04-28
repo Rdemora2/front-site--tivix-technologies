@@ -7,13 +7,13 @@ export const metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://inovalabs.com.br/signin",
+    canonical: "https://front-site-inovalabs-technologies.vercel.app//signin",
   },
   openGraph: {
     title: "Login | Inovalabs Technologies",
     description:
       "Acesse sua conta na Inovalabs Technologies e gerencie seus projetos digitais.",
-    url: "https://inovalabs.com.br/signin",
+    url: "https://front-site-inovalabs-technologies.vercel.app//signin",
     images: [
       {
         url: "/images/logo-inovalabs-banner.png",
