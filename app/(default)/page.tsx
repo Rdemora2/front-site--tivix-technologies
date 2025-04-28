@@ -3,13 +3,13 @@ export const metadata = {
   description:
     "Somos apaixonados por transformar ideias em soluções digitais robustas. Oferecemos serviços de desenvolvimento web, aplicativos móveis, IA e cloud computing com foco em qualidade e inovação.",
   alternates: {
-    canonical: "https://inovalabs.com.br",
+    canonical: "https://front-site-inovalabs-technologies.vercel.app/",
   },
   openGraph: {
     title: "Inovalabs Technologies | Desenvolvimento de Software Personalizado",
     description:
       "Transformamos ideias em soluções digitais robustas com desenvolvimento web, aplicativos móveis e inteligência artificial para impulsionar seu negócio.",
-    url: "https://inovalabs.com.br",
+    url: "https://front-site-inovalabs-technologies.vercel.app/",
     images: [
       {
         url: "/images/logo-inovalabs-banner.png",
