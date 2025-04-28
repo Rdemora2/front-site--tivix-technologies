@@ -2,6 +2,7 @@ import "./css/style.css";
 
 import { Inter, Architects_Daughter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 
 import Header from "@/components/ui/header";
@@ -154,7 +155,9 @@ export default function RootLayout({
             }),
           }}
         />
+        {/* Componentes da Vercel para monitoramento de performance e acessos */}
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
