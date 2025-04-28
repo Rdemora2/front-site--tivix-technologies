@@ -1,0 +1,12 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Diretórios/arquivos a não indexar
+Disallow: /signin
+Disallow: /signup
+Disallow: /reset-password
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://inovalabs.com.br/sitemap.xml

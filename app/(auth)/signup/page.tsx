@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Cadastrar - Inovalabs Technologies",
+  title: "Cadastro - Inovalabs Technologies",
   description: "Crie sua conta na Inovalabs Technologies",
 };
 

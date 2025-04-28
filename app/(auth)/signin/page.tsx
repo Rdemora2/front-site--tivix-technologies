@@ -1,6 +1,28 @@
 export const metadata = {
-  title: "Fazer login - Inovalabs",
-  description: "Page description",
+  title: "Acesso ao Sistema | Inovalabs Technologies",
+  description:
+    "Acesse sua conta na Inovalabs Technologies e gerencie seus projetos de desenvolvimento web, mobile e IA. Login seguro e rápido.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://inovalabs.com.br/signin",
+  },
+  openGraph: {
+    title: "Login | Inovalabs Technologies",
+    description:
+      "Acesse sua conta na Inovalabs Technologies e gerencie seus projetos digitais.",
+    url: "https://inovalabs.com.br/signin",
+    images: [
+      {
+        url: "/images/logo-inovalabs-banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Login Inovalabs Technologies",
+      },
+    ],
+  },
 };
 
 import Link from "next/link";
