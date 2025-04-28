@@ -41,6 +41,7 @@ export default function ModalVideo({
             width={thumbWidth}
             height={thumbHeight}
             alt={thumbAlt}
+            priority
           />
           <button
             className="absolute group"

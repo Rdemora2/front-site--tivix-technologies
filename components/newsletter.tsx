@@ -63,7 +63,7 @@ export default function Newsletter() {
                   className="btn text-blue-600 bg-blue-100 hover:bg-white shadow"
                   href="#0"
                 >
-                  Inscrever-se
+                  Inscrever
                 </a>
               </div>
               {/* Success message */}
