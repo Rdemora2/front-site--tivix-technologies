@@ -6,7 +6,8 @@ export const metadata = {
     canonical: "https://front-site-inovalabs-technologies.vercel.app/",
   },
   openGraph: {
-    title: "Inovalabs Technologies | Desenvolvimento de Software Personalizado",
+    siteName: "Inovalabs Technologies",
+    title: "Inovalabs Technologies | Desenvolvimento Web, Mobile e IA",
     description:
       "Transformamos ideias em soluções digitais robustas com desenvolvimento web, aplicativos móveis e inteligência artificial para impulsionar seu negócio.",
     url: "https://front-site-inovalabs-technologies.vercel.app/",
