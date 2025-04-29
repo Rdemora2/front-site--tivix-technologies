@@ -7,13 +7,13 @@ export const metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://tivix.com.br//signin",
+    canonical: "https://tivix.com.br/signin",
   },
   openGraph: {
     title: "Login | Tivix Technologies",
     description:
       "Acesse sua conta na Tivix Technologies e gerencie seus projetos digitais.",
-    url: "https://tivix.com.br//signin",
+    url: "https://tivix.com.br/signin",
     images: [
       {
         url: "/images/logo-tivix-banner.png",
