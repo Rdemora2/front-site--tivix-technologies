@@ -139,7 +139,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "Tivix Technologies",
               url: "https://tivix.com.br/",
-              logo: "https://tivix.com.br//images/logo-tivix-full.png",
+              logo: "https://tivix.com.br/images/logo-tivix-full.png",
               description:
                 "Desenvolvimento de soluções tecnológicas personalizadas com foco em web, mobile e inteligência artificial.",
               contactPoint: {
