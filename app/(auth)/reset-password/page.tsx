@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Esqueceu sua senha - Inovalabs",
+  title: "Esqueceu sua senha - Tivix",
   description: "Page description",
 };
 

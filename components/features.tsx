@@ -9,7 +9,7 @@ export default function Features() {
               Tecnologia de ponta para impulsionar seu negócio
             </h2>
             <p className="text-xl text-gray-400">
-              A Inovalabs Technologies combina as tecnologias mais avançadas do
+              A Tivix Technologies combina as tecnologias mais avançadas do
               mercado com expertise técnica para criar soluções que proporcionam
               vantagem competitiva para sua empresa.
             </p>

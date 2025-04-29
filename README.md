@@ -1,8 +1,8 @@
-# React / Next.js Inovalabs page
+# React / Next.js Tivix page
 
 ## Live demo
 
-Check the live demo here 👉️ [Vercel Production Deploy](https://front-site-inovalabs-technologies.vercel.app/)
+Check the live demo here 👉️ [Vercel Production Deploy](https://tivix.com.br)
 
 ## Usage
 

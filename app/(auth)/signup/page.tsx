@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Cadastro - Inovalabs Technologies",
-  description: "Crie sua conta na Inovalabs Technologies",
+  title: "Cadastro - Tivix Technologies",
+  description: "Crie sua conta na Tivix Technologies",
 };
 
 import Link from "next/link";
@@ -122,7 +122,7 @@ export default function SignUp() {
                 </div>
               </div>
               <div className="text-sm text-gray-500 text-center">
-                Concordo em ser contatado pela Inovalabs Technologies sobre esta
+                Concordo em ser contatado pela Tivix Technologies sobre esta
                 oferta conforme a{" "}
                 <Link
                   href="#"
@@ -141,7 +141,7 @@ export default function SignUp() {
               </div>
             </form>
             <div className="text-gray-400 text-center mt-6">
-              Já possui uma conta na Inovalabs?{" "}
+              Já possui uma conta na Tivix?{" "}
               <Link
                 href="/signin"
                 className="text-blue-600 hover:text-gray-200 transition duration-150 ease-in-out"
