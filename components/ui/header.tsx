@@ -15,10 +15,10 @@ export default function Header() {
               <Image
                 src={LogoImage}
                 alt="tivix"
-                width={260}
+                width={160}
                 height={80}
                 priority
-                className="h-32 w-auto"
+                className="h-12 w-auto"
               />
             </Link>
           </div>
