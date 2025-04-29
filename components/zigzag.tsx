@@ -16,7 +16,7 @@ export default function Zigzag() {
             </div>
             <h1 className="h2 mb-4">Uma empresa, infinitas soluções</h1>
             <p className="text-xl text-gray-400">
-              A Inovalabs Technologies oferece soluções personalizadas para
+              A Tivix Technologies oferece soluções personalizadas para
               transformar as ideias da sua empresa em realidade digital,
               trazendo inovação e excelência técnica em cada projeto.
             </p>

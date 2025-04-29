@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import LogoImage from "@/public/images/logo-inovalabs-full.png";
+import LogoImage from "@/public/images/logo-tivix-full.png";
 import MobileMenu from "./mobile-menu";
 
 export default function Header() {
@@ -11,14 +11,14 @@ export default function Header() {
           {/* Site branding */}
           <div className="shrink-0 mr-4">
             {/* Logo */}
-            <Link href="/" className="block" aria-label="Inovalabs">
+            <Link href="/" className="block" aria-label="tivix">
               <Image
                 src={LogoImage}
-                alt="Inovalabs"
-                width={260}
+                alt="tivix"
+                width={160}
                 height={80}
                 priority
-                className="h-32 w-auto"
+                className="h-12 w-auto"
               />
             </Link>
           </div>

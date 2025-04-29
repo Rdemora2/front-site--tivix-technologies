@@ -1,25 +1,25 @@
 export const metadata = {
-  title: "Acesso ao Sistema | Inovalabs Technologies",
+  title: "Acesso ao Sistema | Tivix Technologies",
   description:
-    "Acesse sua conta na Inovalabs Technologies e gerencie seus projetos de desenvolvimento web, mobile e IA. Login seguro e rápido.",
+    "Acesse sua conta na Tivix Technologies e gerencie seus projetos de desenvolvimento web, mobile e IA. Login seguro e rápido.",
   robots: {
     index: false,
     follow: true,
   },
   alternates: {
-    canonical: "https://front-site-inovalabs-technologies.vercel.app//signin",
+    canonical: "https://tivix.com.br/signin",
   },
   openGraph: {
-    title: "Login | Inovalabs Technologies",
+    title: "Login | Tivix Technologies",
     description:
-      "Acesse sua conta na Inovalabs Technologies e gerencie seus projetos digitais.",
-    url: "https://front-site-inovalabs-technologies.vercel.app//signin",
+      "Acesse sua conta na Tivix Technologies e gerencie seus projetos digitais.",
+    url: "https://tivix.com.br/signin",
     images: [
       {
-        url: "/images/logo-inovalabs-banner.png",
+        url: "/images/logo-tivix-banner.png",
         width: 1200,
         height: 630,
-        alt: "Login Inovalabs Technologies",
+        alt: "Login Tivix Technologies",
       },
     ],
   },

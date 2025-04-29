@@ -1,22 +1,22 @@
 export const metadata = {
-  title: "Inovalabs Technologies | Desenvolvimento Web, Mobile e IA",
+  title: "Tivix Technologies | Desenvolvimento Web, Mobile e IA",
   description:
     "Somos apaixonados por transformar ideias em soluções digitais robustas. Oferecemos serviços de desenvolvimento web, aplicativos móveis, IA e cloud computing com foco em qualidade e inovação.",
   alternates: {
-    canonical: "https://front-site-inovalabs-technologies.vercel.app/",
+    canonical: "https://tivix.com.br/",
   },
   openGraph: {
-    siteName: "Inovalabs Technologies",
-    title: "Inovalabs Technologies | Desenvolvimento Web, Mobile e IA",
+    siteName: "Tivix Technologies",
+    title: "Tivix Technologies | Desenvolvimento Web, Mobile e IA",
     description:
       "Transformamos ideias em soluções digitais robustas com desenvolvimento web, aplicativos móveis e inteligência artificial para impulsionar seu negócio.",
-    url: "https://front-site-inovalabs-technologies.vercel.app/",
+    url: "https://tivix.com.br/",
     images: [
       {
-        url: "/images/logo-inovalabs-banner.png",
+        url: "/images/logo-tivix-banner.png",
         width: 1200,
         height: 630,
-        alt: "Inovalabs Technologies - Soluções Digitais",
+        alt: "Tivix Technologies - Soluções Digitais",
       },
     ],
   },

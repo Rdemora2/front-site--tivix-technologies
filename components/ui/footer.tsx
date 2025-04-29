@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="md:col-span-4 lg:col-span-5">
               <div className="mb-2">
                 {/* Logo */}
-                <Link href="/" className="inline-block" aria-label="Inovalabs">
+                <Link href="/" className="inline-block" aria-label="Tivix">
                   <svg
                     className="w-8 h-8 fill-current text-blue-600"
                     viewBox="0 0 32 32"
@@ -23,7 +23,7 @@ export default function Footer() {
                 </Link>
               </div>
               <div className="text-gray-400">
-                A Inovalabs Technologies é uma software house paulistana
+                A Tivix Technologies é uma software house paulistana
                 especializada no desenvolvimento de soluções tecnológicas de
                 ponta, transformando ideias em produtos digitais inovadores.
               </div>
@@ -235,7 +235,7 @@ export default function Footer() {
 
             {/* Copyrights note */}
             <div className="text-gray-400 text-sm mr-4">
-              &copy; Inovalabs Technologies - Todos os direitos reservados.
+              &copy; Tivix Technologies - Todos os direitos reservados.
             </div>
           </div>
         </div>

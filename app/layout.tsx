@@ -21,12 +21,10 @@ const architects_daughter = Architects_Daughter({
 });
 
 export const metadata = {
-  metadataBase: new URL(
-    "https://front-site-inovalabs-technologies.vercel.app/"
-  ),
+  metadataBase: new URL("https://tivix.com.br/"),
   title: {
-    default: "Inovalabs Technologies | Desenvolvimento Web, Mobile e IA",
-    template: "%s | Inovalabs Technologies",
+    default: "Tivix Technologies | Desenvolvimento Web, Mobile e IA",
+    template: "%s | Tivix Technologies",
   },
   description:
     "Transformamos ideias em soluções digitais robustas com desenvolvimento web, aplicativos móveis, IA e cloud computing para impulsionar seu negócio.",
@@ -43,8 +41,8 @@ export const metadata = {
   authors: [
     { name: "Roberto Zarzur", url: "https://linkedin.com/in/robertozarzur" },
   ],
-  creator: "Inovalabs Technologies",
-  publisher: "Inovalabs Technologies",
+  creator: "Tivix Technologies",
+  publisher: "Tivix Technologies",
   formatDetection: {
     email: false,
     address: false,
@@ -78,22 +76,22 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://front-site-inovalabs-technologies.vercel.app/",
-    siteName: "Inovalabs Technologies",
-    title: "Inovalabs Technologies | Soluções Digitais Inovadoras",
+    url: "https://tivix.com.br/",
+    siteName: "Tivix Technologies",
+    title: "Tivix Technologies | Soluções Digitais Inovadoras",
     description:
       "Desenvolvemos soluções tecnológicas de ponta para transformar ideias em produtos digitais inovadores. Conheça nossos serviços.",
     images: [
       {
-        url: "/images/logo-inovalabs-banner.png",
+        url: "/images/logo-tivix-banner.png",
         width: 1200,
         height: 630,
-        alt: "Inovalabs Technologies",
+        alt: "Tivix Technologies",
       },
     ],
   },
   alternates: {
-    canonical: "https://front-site-inovalabs-technologies.vercel.app/",
+    canonical: "https://tivix.com.br/",
   },
 };
 
@@ -139,9 +137,9 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "Inovalabs Technologies",
-              url: "https://front-site-inovalabs-technologies.vercel.app/",
-              logo: "https://front-site-inovalabs-technologies.vercel.app//images/logo-inovalabs-full.png",
+              name: "Tivix Technologies",
+              url: "https://tivix.com.br/",
+              logo: "https://tivix.com.br/images/logo-tivix-full.png",
               description:
                 "Desenvolvimento de soluções tecnológicas personalizadas com foco em web, mobile e inteligência artificial.",
               contactPoint: {
@@ -151,9 +149,7 @@ export default function RootLayout({
                 email: "robertomoraeszar@gmail.com",
                 telephone: "+55-11-99999-9999",
               },
-              sameAs: [
-                "https://www.linkedin.com/company/inovalabs-technologies",
-              ],
+              sameAs: ["https://www.linkedin.com/company/tivix-technologies"],
             }),
           }}
         />

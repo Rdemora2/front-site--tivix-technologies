@@ -9,4 +9,4 @@ Disallow: /reset-password
 Disallow: /api/
 
 # Sitemap
-Sitemap: https://front-site-inovalabs-technologies.vercel.app//sitemap.xml
+Sitemap: https://tivix.com.br//sitemap.xml

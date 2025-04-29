@@ -14,7 +14,7 @@ export default function Testimonials() {
             <h2 className="h2 mb-4">A opinião dos nossos clientes</h2>
             <p className="text-xl text-gray-400">
               Veja o que nossos parceiros e clientes têm a dizer sobre a
-              experiência de trabalhar com a Inovalabs Technologies.
+              experiência de trabalhar com a Tivix Technologies.
             </p>
           </div>
 
@@ -44,10 +44,10 @@ export default function Testimonials() {
                 </div>
               </div>
               <blockquote className="text-lg text-gray-400 grow">
-                — A Inovalabs entregou nosso projeto de e-commerce em tempo
-                recorde e com uma qualidade excepcional. O sistema é estável,
-                rápido e fácil de administrar. Nossos clientes notaram a
-                diferença imediatamente.
+                — A Tivix entregou nosso projeto de e-commerce em tempo recorde
+                e com uma qualidade excepcional. O sistema é estável, rápido e
+                fácil de administrar. Nossos clientes notaram a diferença
+                imediatamente.
               </blockquote>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
                 <cite className="text-gray-200 not-italic">Ana Ferreira</cite> -{" "}
@@ -85,10 +85,10 @@ export default function Testimonials() {
                 </div>
               </div>
               <blockquote className="text-lg text-gray-400 grow">
-                — Nossa solução de IA desenvolvida pela Inovalabs transformou
-                nosso atendimento ao cliente. A automação foi tão bem
-                implementada que conseguimos reduzir o tempo de resposta em 70%
-                e aumentar a satisfação dos clientes.
+                — Nossa solução de IA desenvolvida pela Tivix transformou nosso
+                atendimento ao cliente. A automação foi tão bem implementada que
+                conseguimos reduzir o tempo de resposta em 70% e aumentar a
+                satisfação dos clientes.
               </blockquote>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
                 <cite className="text-gray-200 not-italic">Carlos Silva</cite> -{" "}
@@ -126,8 +126,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <blockquote className="text-lg text-gray-400 grow">
-                — O aplicativo móvel desenvolvido pela Inovalabs para nossa
-                startup superou todas as expectativas. A interface intuitiva e o
+                — O aplicativo móvel desenvolvido pela Tivix para nossa startup
+                superou todas as expectativas. A interface intuitiva e o
                 desempenho excepcional nos ajudaram a conquistar mais de 50 mil
                 usuários no primeiro mês de lançamento.
               </blockquote>
