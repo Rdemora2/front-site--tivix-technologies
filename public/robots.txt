@@ -9,4 +9,4 @@ Disallow: /reset-password
 Disallow: /api/
 
 # Sitemap
-Sitemap: https://tivix.com.br//sitemap.xml
+Sitemap: https://tivix.com.br/sitemap.xml
