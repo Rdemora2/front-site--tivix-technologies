@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: tivix-front-nginx
+    restart: unless-stopped
+    networks:
+      - web
+      - internal-services
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tivix-front.rule=Host(`tivix-front.local`)"
+      - "traefik.http.routers.tivix-front.entrypoints=web"
+      - "traefik.http.routers.tivix-front.service=tivix-front-service"
+      - "traefik.http.services.tivix-front-service.loadbalancer.server.port=80"
+
+  app:
+    image: ghcr.io/Rdemora2/Front-site--tivix-technologies:latest
+    container_name: tivix-front-app
+    restart: unless-stopped
+    networks:
+      - internal-services
+
+networks:
+  web:
+    external: true
+  internal-services:
+    external: true
