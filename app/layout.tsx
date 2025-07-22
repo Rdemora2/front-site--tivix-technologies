@@ -1,24 +1,10 @@
 import "./css/style.css";
 
-import { Inter, Architects_Daughter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 
 import Header from "@/components/ui/header";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const architects_daughter = Architects_Daughter({
-  subsets: ["latin"],
-  variable: "--font-architects-daughter",
-  weight: "400",
-  display: "swap",
-});
 
 export const metadata = {
   metadataBase: new URL("https://tivix.com.br/"),
@@ -125,7 +111,10 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${architects_daughter.variable} font-inter antialiased bg-gray-900 text-gray-200 tracking-tight`}
+        className="font-inter antialiased bg-gray-900 text-gray-200 tracking-tight"
+        style={{
+          fontFamily: 'var(--font-inter)',
+        }}
       >
         <div className="flex flex-col min-h-screen overflow-hidden">
           <Header />
