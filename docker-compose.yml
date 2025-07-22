@@ -12,8 +12,9 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.tivix-front.rule=Host(`tivix-front.local`)"
-      - "traefik.http.routers.tivix-front.entrypoints=web"
+      - "traefik.http.routers.tivix-front.rule=Host(`tivix.com.br`) || Host(`www.tivix.com.br`)"
+      - "traefik.http.routers.tivix-front.entrypoints=websecure"
+      - "traefik.http.routers.tivix-front.tls.certresolver=myresolver"
       - "traefik.http.routers.tivix-front.service=tivix-front-service"
       - "traefik.http.services.tivix-front-service.loadbalancer.server.port=80"
 
