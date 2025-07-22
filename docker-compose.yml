@@ -18,7 +18,7 @@ services:
       - "traefik.http.services.tivix-front-service.loadbalancer.server.port=80"
 
   app:
-    image: ghcr.io/Rdemora2/Front-site--tivix-technologies:latest
+    image: ghcr.io/rdemora2/front-site--tivix-technologies:latest
     container_name: tivix-front-app
     restart: unless-stopped
     networks:
