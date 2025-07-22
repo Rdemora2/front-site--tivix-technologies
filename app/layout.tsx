@@ -1,7 +1,5 @@
 import "./css/style.css";
 
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 
 import Header from "@/components/ui/header";
@@ -113,7 +111,7 @@ export default function RootLayout({
       <body
         className="font-inter antialiased bg-gray-900 text-gray-200 tracking-tight"
         style={{
-          fontFamily: 'var(--font-inter)',
+          fontFamily: "var(--font-inter)",
         }}
       >
         <div className="flex flex-col min-h-screen overflow-hidden">
@@ -142,9 +140,6 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* Componentes da Vercel para monitoramento de performance e acessos */}
-        <SpeedInsights />
-        <Analytics />
       </body>
     </html>
   );
