@@ -1,7 +1,8 @@
 /* Inter Font Family - Using Variable Font for better performance */
 @font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype-variations');
+  font-family: "Inter";
+  src: url("/fonts/Inter/Inter-VariableFont_opsz,wght.woff2")
+    format("woff2-variations");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -10,51 +11,20 @@
 
 /* Inter Italic - Using Variable Font */
 @font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.ttf') format('truetype-variations');
+  font-family: "Inter";
+  src: url("/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.woff2")
+    format("woff2-variations");
   font-weight: 100 900;
   font-style: italic;
   font-display: swap;
   font-optical-sizing: auto;
 }
 
-/* Fallback for browsers that don't support variable fonts */
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter/static/Inter_18pt-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter/static/Inter_18pt-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter/static/Inter_18pt-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter/static/Inter_18pt-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* Architects Daughter Font */
 @font-face {
-  font-family: 'Architects Daughter';
-  src: url('/fonts/Architects_Daughter/ArchitectsDaughter-Regular.ttf') format('truetype');
+  font-family: "Architects Daughter";
+  src: url("/fonts/Architects_Daughter/ArchitectsDaughter-Regular.woff2")
+    format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -62,6 +32,8 @@
 
 /* CSS Variables for fonts - mantendo compatibilidade */
 :root {
-  --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-architects-daughter: 'Architects Daughter', cursive;
+  --font-inter:
+    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-architects-daughter: "Architects Daughter", cursive;
 }
