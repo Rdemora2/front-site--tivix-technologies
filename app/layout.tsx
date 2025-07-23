@@ -93,6 +93,19 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
+        {/* Preconnect para origens externas críticas */}
+        <link rel="preconnect" href="https://a.clarity.ms" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
+
+        {/* Preload das fontes locais críticas para melhor LCP */}
+        <link
+          rel="preload"
+          href="/fonts/Inter/InterVariable.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin=""
+        />
+
         {/* Microsoft Clarity - adicionado com afterInteractive para melhor performance */}
         <Script
           id="clarity-tracking"
@@ -108,12 +121,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className="font-inter antialiased bg-gray-900 text-gray-200 tracking-tight"
-        style={{
-          fontFamily: "var(--font-inter)",
-        }}
-      >
+      <body className="font-inter antialiased bg-gray-900 text-gray-200 tracking-tight">
         <div className="flex flex-col min-h-screen overflow-hidden">
           <Header />
           {children}

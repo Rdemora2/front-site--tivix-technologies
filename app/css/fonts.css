@@ -1,8 +1,7 @@
 /* Inter Font Family - Using Variable Font for better performance */
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/Inter/Inter-VariableFont_opsz,wght.woff2")
-    format("woff2-variations");
+  src: url("/fonts/Inter/InterVariable.woff2") format("woff2-variations");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -12,8 +11,7 @@
 /* Inter Italic - Using Variable Font */
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/Inter/Inter-Italic-VariableFont_opsz,wght.woff2")
-    format("woff2-variations");
+  src: url("/fonts/Inter/InterVariable-Italic.woff2") format("woff2-variations");
   font-weight: 100 900;
   font-style: italic;
   font-display: swap;
@@ -23,7 +21,7 @@
 /* Architects Daughter Font */
 @font-face {
   font-family: "Architects Daughter";
-  src: url("/fonts/Architects_Daughter/ArchitectsDaughter-Regular.woff2")
+  src: url("/fonts/Architects_Daughter/Architects-Daughter-Regular.woff2")
     format("woff2");
   font-weight: 400;
   font-style: normal;
