@@ -38,11 +38,8 @@ module.exports = {
         "1/1": "100%",
       },
       fontFamily: {
-        inter: ["var(--font-inter)", "sans-serif"],
-        "architects-daughter": [
-          "var(--font-architects-daughter)",
-          "sans-serif",
-        ],
+        inter: ["var(--font-inter)"],
+        "architects-daughter": ["var(--font-architects-daughter)"],
       },
       fontSize: {
         xs: "0.75rem",

@@ -1,24 +1,8 @@
 import "./css/style.css";
 
-import { Inter, Architects_Daughter } from "next/font/google";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 
 import Header from "@/components/ui/header";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const architects_daughter = Architects_Daughter({
-  subsets: ["latin"],
-  variable: "--font-architects-daughter",
-  weight: "400",
-  display: "swap",
-});
 
 export const metadata = {
   metadataBase: new URL("https://tivix.com.br/"),
@@ -109,6 +93,19 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
+        {/* Preconnect para origens externas críticas */}
+        <link rel="preconnect" href="https://a.clarity.ms" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
+
+        {/* Preload das fontes locais críticas para melhor LCP */}
+        <link
+          rel="preload"
+          href="/fonts/Inter/InterVariable.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin=""
+        />
+
         {/* Microsoft Clarity - adicionado com afterInteractive para melhor performance */}
         <Script
           id="clarity-tracking"
@@ -124,9 +121,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${inter.variable} ${architects_daughter.variable} font-inter antialiased bg-gray-900 text-gray-200 tracking-tight`}
-      >
+      <body className="font-inter antialiased bg-gray-900 text-gray-200 tracking-tight">
         <div className="flex flex-col min-h-screen overflow-hidden">
           <Header />
           {children}
@@ -153,9 +148,6 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* Componentes da Vercel para monitoramento de performance e acessos */}
-        <SpeedInsights />
-        <Analytics />
       </body>
     </html>
   );

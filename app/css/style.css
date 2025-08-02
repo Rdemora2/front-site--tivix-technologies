@@ -1,6 +1,9 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 
+/* Local fonts */
+@import 'fonts.css';
+
 /* Additional styles */
 @import 'additional-styles/utility-patterns.css';
 @import 'additional-styles/range-slider.css';
