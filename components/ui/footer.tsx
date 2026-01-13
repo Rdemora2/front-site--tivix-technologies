@@ -1,245 +1,120 @@
-import React from "react";
-import Link from "next/link";
+import Link from "next/link"
+import Image from "next/image"
+import LogoImage from "@/public/images/logo-tivix-full.png"
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="py-12 md:py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          {/* Top area: Blocks */}
-          <div className="grid md:grid-cols-12 gap-8 lg:gap-20 mb-8 md:mb-12">
-            {/* 1st block */}
-            <div className="md:col-span-4 lg:col-span-5">
-              <div className="mb-2">
-                {/* Logo */}
-                <Link href="/" className="inline-block" aria-label="Tivix">
-                  <svg
-                    className="w-8 h-8 fill-current text-blue-600"
-                    viewBox="0 0 32 32"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M31.952 14.751a260.51 260.51 0 00-4.359-4.407C23.932 6.734 20.16 3.182 16.171 0c1.634.017 3.21.28 4.692.751 3.487 3.114 6.846 6.398 10.163 9.737.493 1.346.811 2.776.926 4.262zm-1.388 7.883c-2.496-2.597-5.051-5.12-7.737-7.471-3.706-3.246-10.693-9.81-15.736-7.418-4.552 2.158-4.717 10.543-4.96 16.238A15.926 15.926 0 010 15C0 6.716 6.716 0 15 0c8.284 0 15 6.716 15 15 0 2.725-.737 5.278-2.019 7.477-.389.218-.774-.434-.417-.843z" />
-                  </svg>
-                </Link>
-              </div>
-              <div className="text-gray-400">
-                A Tivix Technologies é uma software house paulistana
-                especializada no desenvolvimento de soluções tecnológicas de
-                ponta, transformando ideias em produtos digitais inovadores.
-              </div>
-            </div>
-
-            {/* 2nd, 3rd and 4th blocks */}
-            <div className="md:col-span-8 lg:col-span-7 grid sm:grid-cols-3 gap-8">
-              {/* 2nd block */}
-              <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">Produtos</h6>
-                <ul>
-                  <li className="mb-1">
-                    <Link
-                      href="/"
-                      className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
-                    >
-                      Desenvolvimento Web
-                    </Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link
-                      href="/"
-                      className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
-                    >
-                      Aplicativos Móveis
-                    </Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link
-                      href="/"
-                      className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
-                    >
-                      Soluções Cloud
-                    </Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link
-                      href="/"
-                      className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
-                    >
-                      Inteligência Artificial
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              {/* 3rd block */}
-              <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">Recursos</h6>
-                <ul>
-                  <li className="mb-1">
-                    <Link
-                      href="/"
-                      className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
-                    >
-                      Blog Técnico
-                    </Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link
-                      href="/"
-                      className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
-                    >
-                      Estudos de Caso
-                    </Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link
-                      href="/"
-                      className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
-                    >
-                      Documentação
-                    </Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link
-                      href="/"
-                      className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
-                    >
-                      Suporte Técnico
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              {/* 4th block */}
-              <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">Empresa</h6>
-                <ul>
-                  <li className="mb-1">
-                    <Link
-                      href="/"
-                      className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
-                    >
-                      Sobre Nós
-                    </Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link
-                      href="/"
-                      className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
-                    >
-                      Carreiras
-                    </Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link
-                      href="/"
-                      className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
-                    >
-                      Parceiros
-                    </Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link
-                      href="/"
-                      className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
-                    >
-                      Contato
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
+    <footer className="border-t border-neutral-900">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12 md:py-14">
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Brand */}
+          <div className="sm:col-span-2 lg:col-span-2">
+            <Link href="/" className="inline-block mb-3 sm:mb-4 transition-all duration-500 hover:opacity-70">
+              <Image
+                src={LogoImage || "/placeholder.svg"}
+                alt="Tivix Technologies"
+                width={100}
+                height={32}
+                className="h-5 sm:h-6 w-auto brightness-0 invert"
+              />
+            </Link>
+            <p className="text-neutral-500 text-xs sm:text-sm leading-relaxed max-w-xs">
+              Engenharia de software para empresas que precisam de sistemas robustos, IA aplicada e automação
+              inteligente.
+            </p>
           </div>
 
-          {/* Bottom area */}
-          <div className="md:flex md:items-center md:justify-between">
-            {/* Social links */}
-            <ul className="flex mb-4 md:order-1 md:ml-4 md:mb-0">
-              <li>
-                <Link
-                  href="/"
-                  className="flex justify-center items-center text-blue-600 bg-gray-800 hover:text-gray-100 hover:bg-blue-600 rounded-full transition duration-150 ease-in-out"
-                  aria-label="Twitter"
-                >
-                  <svg
-                    className="w-8 h-8 fill-current"
-                    viewBox="0 0 32 32"
-                    xmlns="http://www.w3.org/2000/svg"
+          {/* Services */}
+          <div>
+            <h4 className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-widest mb-3">
+              Serviços
+            </h4>
+            <ul className="space-y-2 text-xs sm:text-sm">
+              {[
+                { href: "/#servicos", label: "Desenvolvimento Full Stack" },
+                { href: "/#servicos", label: "Inteligência Artificial" },
+                { href: "/#servicos", label: "Automação de Processos" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="group relative text-neutral-500 transition-all duration-500 hover:text-white inline-block"
                   >
-                    <path d="M24 11.5c-.6.3-1.2.4-1.9.5.7-.4 1.2-1 1.4-1.8-.6.4-1.3.6-2.1.8-.6-.6-1.5-1-2.4-1-1.7 0-3.2 1.5-3.2 3.3 0 .3 0 .5.1.7-2.7-.1-5.2-1.4-6.8-3.4-.3.5-.4 1-.4 1.7 0 1.1.6 2.1 1.5 2.7-.5 0-1-.2-1.5-.4 0 1.6 1.1 2.9 2.6 3.2-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.4 1.3 1.6 2.3 3.1 2.3-1.1.9-2.5 1.4-4.1 1.4H8c1.5.9 3.2 1.5 5 1.5 6 0 9.3-5 9.3-9.3v-.4c.7-.5 1.3-1.1 1.7-1.8z" />
-                  </svg>
-                </Link>
-              </li>
-              <li className="ml-4">
-                <Link
-                  href="/"
-                  className="flex justify-center items-center text-blue-600 bg-gray-800 hover:text-gray-100 hover:bg-blue-600 rounded-full transition duration-150 ease-in-out"
-                  aria-label="Github"
-                >
-                  <svg
-                    className="w-8 h-8 fill-current"
-                    viewBox="0 0 32 32"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M16 8.2c-4.4 0-8 3.6-8 8 0 3.5 2.3 6.5 5.5 7.6.4.1.5-.2.5-.4V22c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8.6-.2 1.3-.3 2-.3s1.4.1 2 .3c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.7 3.9.3.4.6.9.6 1.6v2.2c0 .2.1.5.6.4 3.2-1.1 5.5-4.1 5.5-7.6-.1-4.4-3.7-8-8.1-8z" />
-                  </svg>
-                </Link>
-              </li>
-              <li className="ml-4">
-                <Link
-                  href="/"
-                  className="flex justify-center items-center text-blue-600 bg-gray-800 hover:text-gray-100 hover:bg-blue-600 rounded-full transition duration-150 ease-in-out"
-                  aria-label="Facebook"
-                >
-                  <svg
-                    className="w-8 h-8 fill-current"
-                    viewBox="0 0 32 32"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M14.023 24L14 17h-3v-3h3v-2c0-2.7 1.672-4 4.08-4 1.153 0 2.144.086 2.433.124v2.821h-1.67c-1.31 0-1.563.623-1.563 1.536V14H21l-1 3h-2.72v7h-3.257z" />
-                  </svg>
-                </Link>
-              </li>
-              <li className="ml-4">
-                <Link
-                  href="/"
-                  className="flex justify-center items-center text-blue-600 bg-gray-800 hover:text-gray-100 hover:bg-blue-600 rounded-full transition duration-150 ease-in-out"
-                  aria-label="Instagram"
-                >
-                  <svg
-                    className="w-8 h-8 fill-current"
-                    viewBox="0 0 32 32"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="20.145" cy="11.892" r="1" />
-                    <path d="M16 20c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-6c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2z" />
-                    <path d="M20 24h-8c-2.056 0-4-1.944-4-4v-8c0-2.056 1.944-4 4-4h8c2.056 0 4 1.944 4 4v8c0 2.056-1.944 4-4 4zm-8-14c-.935 0-2 1.065-2 2v8c0 .953 1.047 2 2 2h8c.935 0 2-1.065 2-2v-8c0-.935-1.065-2-2-2h-8z" />
-                  </svg>
-                </Link>
-              </li>
-              <li className="ml-4">
-                <Link
-                  href="https://www.linkedin.com/company/inovalabs-technologies"
-                  className="flex justify-center items-center text-blue-600 bg-gray-800 hover:text-gray-100 hover:bg-blue-600 rounded-full transition duration-150 ease-in-out"
-                  aria-label="Linkedin"
-                >
-                  <svg
-                    className="w-8 h-8 fill-current"
-                    viewBox="0 0 32 32"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M23.3 8H8.7c-.4 0-.7.3-.7.7v14.7c0 .3.3.6.7.6h14.7c.4 0 .7-.3.7-.7V8.7c-.1-.4-.4-.7-.8-.7zM12.7 21.6h-2.3V14h2.4v7.6h-.1zM11.6 13c-.8 0-1.4-.7-1.4-1.4 0-.8.6-1.4 1.4-1.4.8 0 1.4.6 1.4 1.4-.1.7-.7 1.4-1.4 1.4zm10 8.6h-2.4v-3.7c0-.9 0-2-1.2-2s-1.4 1-1.4 2v3.8h-2.4V14h2.3v1c.3-.6 1.1-1.2 2.2-1.2 2.4 0 2.8 1.6 2.8 3.6v4.2h.1z" />
-                  </svg>
-                </Link>
-              </li>
+                    <span>{item.label}</span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-white/50 transition-all duration-500 group-hover:w-full" />
+                  </Link>
+                </li>
+              ))}
             </ul>
+          </div>
 
-            {/* Copyrights note */}
-            <div className="text-gray-400 text-sm mr-4">
-              &copy; Tivix Technologies - Todos os direitos reservados.
-            </div>
+          {/* Company */}
+          <div>
+            <h4 className="text-[10px] sm:text-xs font-medium text-neutral-400 uppercase tracking-widest mb-3">
+              Empresa
+            </h4>
+            <ul className="space-y-2 text-xs sm:text-sm">
+              {[
+                { href: "/contato", label: "Contato" },
+                { href: "/privacidade", label: "Privacidade" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="group relative text-neutral-500 transition-all duration-500 hover:text-white inline-block"
+                  >
+                    <span>{item.label}</span>
+                    <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-white/50 transition-all duration-500 group-hover:w-full" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 sm:mt-10 pt-6 border-t border-neutral-900">
+          <p className="text-neutral-600 text-[10px] sm:text-xs text-center sm:text-left">
+            © {new Date().getFullYear()} Tivix Technologies. São Paulo, Brasil.
+          </p>
+
+          <div className="flex items-center gap-4">
+            {[
+              {
+                href: "https://linkedin.com/company/tivix-technologies",
+                label: "LinkedIn da Tivix",
+                icon: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z",
+              },
+              {
+                href: "https://github.com/tivix-technologies",
+                label: "GitHub da Tivix",
+                icon: "M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z",
+              },
+              {
+                href: "https://instagram.com/tivixtech",
+                label: "Instagram da Tivix",
+                icon: "M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z",
+              },
+            ].map((social) => (
+              <Link
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group text-neutral-600 transition-all duration-500 hover:text-white hover:scale-110"
+                aria-label={social.label}
+              >
+                <svg
+                  className="w-4 h-4 transition-transform duration-500 group-hover:rotate-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d={social.icon} />
+                </svg>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
     </footer>
-  );
+  )
 }
