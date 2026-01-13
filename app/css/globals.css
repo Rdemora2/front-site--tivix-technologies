@@ -1,0 +1,219 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+}
+
+@layer base {
+  :root {
+    /* New Apple-inspired minimal dark theme */
+    --font-sans: var(--font-inter);
+    --font-mono: var(--font-geist-mono);
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 64%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 0% 64%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+/* Custom animations for Apple-like smooth effects */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-up-delay {
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-up-delay-2 {
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+
+  .animate-blur-in {
+    animation: blurIn 1s ease-out forwards;
+  }
+
+  /* Added floating orb animations for hero background */
+  .animate-float-slow {
+    animation: floatSlow 20s ease-in-out infinite;
+  }
+
+  .animate-float-slow-delayed {
+    animation: floatSlowDelayed 25s ease-in-out infinite;
+    animation-delay: -5s;
+  }
+
+  .animate-float-reverse {
+    animation: floatReverse 22s ease-in-out infinite;
+    animation-delay: -10s;
+  }
+
+  .animate-grid-shift {
+    animation: gridShift 30s linear infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+/* Floating orb keyframes for subtle background movement */
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -40px) scale(1.05);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+  75% {
+    transform: translate(40px, 30px) scale(1.02);
+  }
+}
+
+@keyframes floatSlowDelayed {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-40px, 30px) scale(0.98);
+  }
+  50% {
+    transform: translate(30px, -30px) scale(1.04);
+  }
+  75% {
+    transform: translate(-20px, -40px) scale(1);
+  }
+}
+
+@keyframes floatReverse {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(50px, 20px) scale(1.03);
+  }
+  66% {
+    transform: translate(-30px, -30px) scale(0.97);
+  }
+}
+
+@keyframes gridShift {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(64px);
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better selection colors */
+::selection {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}

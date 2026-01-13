@@ -1,54 +1,49 @@
-import Link from "next/link";
-import Image from "next/image";
-import LogoImage from "@/public/images/logo-tivix-full.png";
-import MobileMenu from "./mobile-menu";
+"use client"
+
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import LogoImage from "@/public/images/logo-tivix-full.png"
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
-    <header className="absolute w-full z-30">
+    <header
+      className={`fixed w-full z-50 transition-all duration-500 ${
+        scrolled ? "bg-black/80 backdrop-blur-xl border-b border-white/5" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-20">
-          {/* Site branding */}
-          <div className="shrink-0 mr-4">
-            {/* Logo */}
-            <Link href="/" className="block" aria-label="tivix">
-              <Image
-                src={LogoImage}
-                alt="tivix"
-                width={160}
-                height={80}
-                priority
-                className="h-12 w-auto"
-              />
-            </Link>
-          </div>
+        <div className="flex items-center justify-between h-14 sm:h-16">
+          <Link href="/" className="relative z-10 transition-all duration-500 hover:opacity-70 hover:scale-95">
+            <Image
+              src={LogoImage || "/placeholder.svg"}
+              alt="Tivix"
+              width={100}
+              height={32}
+              priority
+              className="h-5 sm:h-6 w-auto brightness-0 invert"
+            />
+          </Link>
 
-          {/* Desktop navigation */}
-          <nav className="hidden md:flex md:grow">
-            {/* Desktop sign in links */}
-            <ul className="flex grow justify-end flex-wrap items-center">
-              <li>
-                <Link
-                  href="/signin"
-                  className="font-medium text-blue-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  Entrar
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/signup"
-                  className="btn-sm text-white bg-blue-600 hover:bg-blue-700 ml-3"
-                >
-                  Cadastrar
-                </Link>
-              </li>
-            </ul>
-          </nav>
-
-          <MobileMenu />
+          <Link
+            href="/signin"
+            className="relative text-xs sm:text-sm text-neutral-400 transition-all duration-500 hover:text-white group"
+          >
+            <span>Entrar</span>
+            <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-500 group-hover:w-full" />
+          </Link>
         </div>
       </div>
     </header>
-  );
+  )
 }

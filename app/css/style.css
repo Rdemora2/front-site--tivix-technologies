@@ -1,25 +1,232 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
+/* Replace @import "tailwindcss/*" with @tailwind directives */
+@tailwind base;
+@tailwind components;
 
-/* Local fonts */
-@import 'fonts.css';
+/* Inlined fonts.css to fix import error */
+/* Inter Font Family - Using Variable Font for better performance */
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/InterVariable.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  font-optical-sizing: auto;
+}
 
-/* Additional styles */
-@import 'additional-styles/utility-patterns.css';
-@import 'additional-styles/range-slider.css';
-@import 'additional-styles/toggle-switch.css';
-@import 'additional-styles/theme.css';
+/* Inter Italic - Using Variable Font */
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter/InterVariable-Italic.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+  font-optical-sizing: auto;
+}
 
-@import 'tailwindcss/utilities';
+/* Architects Daughter Font */
+@font-face {
+  font-family: "Architects Daughter";
+  src: url("/fonts/Architects_Daughter/Architects-Daughter-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CSS Variables for fonts */
+:root {
+  --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+  --font-architects-daughter: "Architects Daughter", cursive;
+}
+
+/* Inlined utility-patterns.css to fix import error */
+/* Typography */
+.h1 {
+  @apply text-4xl font-extrabold leading-tight tracking-tighter;
+}
+
+.h2 {
+  @apply text-3xl font-extrabold leading-tight tracking-tighter;
+}
+
+.h3 {
+  @apply text-3xl font-bold leading-tight;
+}
+
+.h4 {
+  @apply text-2xl font-bold leading-snug tracking-tight;
+}
+
+@screen md {
+  .h1 {
+    @apply text-5xl;
+  }
+
+  .h2 {
+    @apply text-4xl;
+  }
+}
+
+/* Buttons */
+.btn,
+.btn-sm {
+  @apply font-medium inline-flex items-center justify-center border border-transparent rounded-sm leading-snug transition duration-150 ease-in-out;
+}
+
+.btn {
+  @apply px-8 py-3;
+}
+
+.btn-sm {
+  @apply px-4 py-2;
+}
+
+/* Forms */
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox,
+.form-radio {
+  @apply bg-transparent border border-gray-700 focus:border-gray-500;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox {
+  @apply rounded-sm;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select {
+  @apply py-3 px-4;
+}
+
+.form-input,
+.form-textarea {
+  @apply placeholder-gray-500;
+}
+
+.form-select {
+  @apply pr-10;
+}
+
+.form-checkbox,
+.form-radio {
+  @apply text-blue-600;
+}
+
+/* Inlined range-slider.css */
+/* Range slider */
+:root {
+  --range-thumb-size: 36px;
+}
+
+input[type="range"] {
+  appearance: none;
+  background: #ccc;
+  border-radius: 3px;
+  height: 6px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  --thumb-size: var(--range-thumb-size);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #000;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 .5v7L12 4zM0 4l4 3.5v-7z' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  height: var(--thumb-size);
+  width: var(--thumb-size);
+}
+
+input[type="range"]::-moz-range-thumb {
+  background-color: #000;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 .5v7L12 4zM0 4l4 3.5v-7z' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  height: var(--thumb-size);
+  width: var(--thumb-size);
+}
+
+input[type="range"]::-ms-thumb {
+  background-color: #000;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 .5v7L12 4zM0 4l4 3.5v-7z' fill='%23FFF' fill-rule='nonzero'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  height: var(--thumb-size);
+  width: var(--thumb-size);
+}
+
+input[type="range"]::-moz-focus-outer {
+  border: 0;
+}
+
+/* Inlined toggle-switch.css */
+/* Toggle switch */
+.form-switch {
+  @apply relative select-none;
+  width: 68px;
+}
+
+.form-switch label {
+  @apply block overflow-hidden cursor-pointer rounded-full;
+  height: 38px;
+}
+
+.form-switch label > span:first-child {
+  @apply absolute block rounded-full;
+  width: 30px;
+  height: 30px;
+  top: 4px;
+  left: 4px;
+  right: 50%;
+  background: #fff;
+  transition: all 0.15s ease-out;
+}
+
+.form-switch input[type="checkbox"]:checked + label {
+  background: #1e40af;
+}
+
+.form-switch input[type="checkbox"]:checked + label > span:first-child {
+  left: 34px;
+}
+
+/* Inlined theme.css */
+/* Theme styles */
+:root {
+  --color-primary: 59 130 246;
+  --color-secondary: 99 102 241;
+}
+
+/* Replace @import "tailwindcss/utilities" with @tailwind utilities */
+@tailwind utilities;
 
 /* Additional Tailwind directives: https://tailwindcss.com/docs/functions-and-directives/#responsive */
 @layer utilities {
-    .rtl {
-        direction: rtl;
-    }
+  .rtl {
+    direction: rtl;
+  }
 }
 
 /* See Alpine.js: https://github.com/alpinejs/alpine#x-cloak */
 [x-cloak=""] {
-    display: none;
+  display: none;
 }

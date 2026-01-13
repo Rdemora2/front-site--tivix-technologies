@@ -1,18 +1,18 @@
-"use client";
+"use client"
 
-import { useState, useRef, Fragment } from "react";
-import type { StaticImageData } from "next/image";
-import { Dialog, Transition } from "@headlessui/react";
-import Image from "next/image";
+import { useState, useRef, Fragment } from "react"
+import type { StaticImageData } from "next/image"
+import { Dialog, Transition } from "@headlessui/react"
+import Image from "next/image"
 
 interface ModalVideoProps {
-  thumb: StaticImageData;
-  thumbWidth: number;
-  thumbHeight: number;
-  thumbAlt: string;
-  video: string;
-  videoWidth: number;
-  videoHeight: number;
+  thumb: StaticImageData
+  thumbWidth: number
+  thumbHeight: number
+  thumbAlt: string
+  video: string
+  videoWidth: number
+  videoHeight: number
 }
 
 export default function ModalVideo({
@@ -24,29 +24,19 @@ export default function ModalVideo({
   videoWidth,
   videoHeight,
 }: ModalVideoProps) {
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const [modalOpen, setModalOpen] = useState<boolean>(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   return (
     <div>
       {/* Miniatura do vídeo */}
       <div>
-        <div
-          className="relative flex justify-center items-center"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          <Image
-            src={thumb}
-            width={thumbWidth}
-            height={thumbHeight}
-            alt={thumbAlt}
-            priority
-          />
+        <div className="relative flex justify-center items-center" data-aos="fade-up" data-aos-delay="200">
+          <Image src={thumb || "/placeholder.svg"} width={thumbWidth} height={thumbHeight} alt={thumbAlt} priority />
           <button
             className="absolute group"
             onClick={() => {
-              setModalOpen(true);
+              setModalOpen(true)
             }}
             aria-label="Assistir o vídeo"
           >
@@ -56,13 +46,7 @@ export default function ModalVideo({
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
-                <linearGradient
-                  x1="78.169%"
-                  y1="9.507%"
-                  x2="24.434%"
-                  y2="90.469%"
-                  id="a"
-                >
+                <linearGradient x1="78.169%" y1="9.507%" x2="24.434%" y2="90.469%" id="a">
                   <stop stopColor="#EBF1F5" stopOpacity=".8" offset="0%" />
                   <stop stopColor="#EBF1F5" offset="100%" />
                 </linearGradient>
@@ -78,11 +62,7 @@ export default function ModalVideo({
       </div>
       {/* Fim: Miniatura do vídeo */}
 
-      <Transition
-        show={modalOpen}
-        as={Fragment}
-        afterEnter={() => videoRef.current?.play()}
-      >
+      <Transition show={modalOpen} as={Fragment} afterEnter={() => videoRef.current?.play()}>
         <Dialog initialFocus={videoRef} onClose={() => setModalOpen(false)}>
           {/* Fundo do modal */}
           <Transition.Child
@@ -103,19 +83,13 @@ export default function ModalVideo({
             enter="transition ease-out duration-200"
             enterFrom="opacity-0 scale-95"
             enterTo="opacity-100 scale-100"
-            leave="ttransition ease-out duration-200"
-            leaveFrom="oopacity-100 scale-100"
+            leave="transition ease-out duration-200"
+            leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
             <div className="max-w-6xl mx-auto h-full flex items-center">
               <Dialog.Panel className="w-full max-h-full aspect-video bg-black overflow-hidden">
-                <video
-                  ref={videoRef}
-                  width={videoWidth}
-                  height={videoHeight}
-                  loop
-                  controls
-                >
+                <video ref={videoRef} width={videoWidth} height={videoHeight} loop controls>
                   <source src={video} type="video/mp4" />
                   Seu navegador não suporta a tag de vídeo.
                 </video>
@@ -126,5 +100,5 @@ export default function ModalVideo({
         </Dialog>
       </Transition>
     </div>
-  );
+  )
 }
