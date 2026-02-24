@@ -35,13 +35,23 @@ export default function Header() {
             />
           </Link>
 
-          <Link
-            href="/signin"
-            className="relative text-xs sm:text-sm text-neutral-400 transition-all duration-500 hover:text-white group"
-          >
-            <span>Entrar</span>
-            <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-500 group-hover:w-full" />
-          </Link>
+          <nav className="flex items-center gap-4 sm:gap-6">
+            <Link
+              href="/contato"
+              className="relative text-xs sm:text-sm text-neutral-400 transition-all duration-500 hover:text-white group"
+            >
+              <span>Contato</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-500 group-hover:w-full" />
+            </Link>
+
+            <Link
+              href="/signin"
+              className="relative text-xs sm:text-sm text-neutral-400 transition-all duration-500 hover:text-white group"
+            >
+              <span>Entrar</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-500 group-hover:w-full" />
+            </Link>
+          </nav>
         </div>
       </div>
     </header>
