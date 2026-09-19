@@ -84,7 +84,17 @@ export default function Features() {
             key={service.id}
             href={`/servicos#${service.id}`}
             className="capability-module"
+            data-service={service.id}
           >
+            <div className="capability-module-signal" aria-hidden="true">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+            <span className="capability-module-watermark" aria-hidden="true">
+              {service.number}
+            </span>
             <div className="capability-module-topline">
               <span>{service.number} / 04</span>
               <span className="capability-module-icon">
@@ -109,6 +119,9 @@ export default function Features() {
           </Link>
         ))}
       </div>
+      <p className="capability-swipe-hint" aria-hidden="true">
+        Deslize para explorar as quatro frentes
+      </p>
     </section>
   );
 }

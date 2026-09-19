@@ -15,12 +15,12 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
+    <div className="home-page">
       <Hero />
       <Features />
       <CaseStudies />
       <Credibility />
-      <CtaSection />
-    </>
+      <CtaSection variant="home" />
+    </div>
   );
 }

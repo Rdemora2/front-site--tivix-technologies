@@ -21,7 +21,7 @@ export default function Brand({
       <Image
         src={tivixLogo}
         alt=""
-        priority={priority}
+        loading={priority ? "eager" : "lazy"}
         sizes={compact ? "88px" : "116px"}
         className={
           compact

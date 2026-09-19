@@ -63,10 +63,13 @@ export default function HeroSignal() {
     if (!context) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const supportsPointerMotion = finePointer.matches;
     const pointer: PointerPosition = { x: 0, y: 0, active: false };
     let size: CanvasSize = { width: 1, height: 1, pixelRatio: 1 };
     let points = buildSignalPoints(28);
     let animationFrame: number | null = null;
+    let isVisible = true;
 
     const resize = () => {
       const bounds = canvas.getBoundingClientRect();
@@ -135,13 +138,19 @@ export default function HeroSignal() {
         context.fill();
       }
 
-      if (!reducedMotion.matches && !document.hidden) {
+      if (!reducedMotion.matches && !document.hidden && isVisible) {
         animationFrame = window.requestAnimationFrame(draw);
+      } else {
+        animationFrame = null;
       }
     };
 
     const render = () => {
       if (animationFrame !== null) window.cancelAnimationFrame(animationFrame);
+      if (!isVisible || document.hidden) {
+        animationFrame = null;
+        return;
+      }
       animationFrame = window.requestAnimationFrame(draw);
     };
 
@@ -155,30 +164,51 @@ export default function HeroSignal() {
       pointer.active = false;
     };
     const handleVisibilityChange = () => {
-      if (!document.hidden) render();
+      if (document.hidden && animationFrame !== null) {
+        window.cancelAnimationFrame(animationFrame);
+        animationFrame = null;
+        return;
+      }
+      render();
+    };
+    const handleMotionChange = () => {
+      render();
     };
 
     const resizeObserver = new ResizeObserver(() => {
       resize();
       render();
     });
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry?.isIntersecting ?? false;
+        render();
+      },
+      { rootMargin: "120px 0px", threshold: 0.01 },
+    );
 
     resizeObserver.observe(canvas);
-    window.addEventListener("pointermove", handlePointerMove, {
-      passive: true,
-    });
-    window.addEventListener("blur", handlePointerLeave);
+    visibilityObserver.observe(canvas);
+    if (supportsPointerMotion) {
+      window.addEventListener("pointermove", handlePointerMove, {
+        passive: true,
+      });
+      window.addEventListener("blur", handlePointerLeave);
+    }
     document.addEventListener("visibilitychange", handleVisibilityChange);
-    reducedMotion.addEventListener("change", render);
+    reducedMotion.addEventListener("change", handleMotionChange);
     resize();
     render();
 
     return () => {
       resizeObserver.disconnect();
-      window.removeEventListener("pointermove", handlePointerMove);
-      window.removeEventListener("blur", handlePointerLeave);
+      visibilityObserver.disconnect();
+      if (supportsPointerMotion) {
+        window.removeEventListener("pointermove", handlePointerMove);
+        window.removeEventListener("blur", handlePointerLeave);
+      }
       document.removeEventListener("visibilitychange", handleVisibilityChange);
-      reducedMotion.removeEventListener("change", render);
+      reducedMotion.removeEventListener("change", handleMotionChange);
       if (animationFrame !== null) window.cancelAnimationFrame(animationFrame);
     };
   }, []);

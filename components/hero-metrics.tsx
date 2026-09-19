@@ -70,6 +70,16 @@ export default function HeroMetrics() {
     let animationFrame: number | null = null;
     let hasAnimated = false;
 
+    const handleMotionChange = (): void => {
+      if (!reducedMotion.matches) return;
+      if (animationFrame !== null) {
+        window.cancelAnimationFrame(animationFrame);
+        animationFrame = null;
+      }
+      hasAnimated = true;
+      setValues(finalValues);
+    };
+
     const animate = (): void => {
       if (hasAnimated) return;
       hasAnimated = true;
@@ -110,8 +120,10 @@ export default function HeroMetrics() {
     );
 
     observer.observe(root);
+    reducedMotion.addEventListener("change", handleMotionChange);
     return () => {
       observer.disconnect();
+      reducedMotion.removeEventListener("change", handleMotionChange);
       if (animationFrame !== null) window.cancelAnimationFrame(animationFrame);
     };
   }, []);
@@ -122,12 +134,15 @@ export default function HeroMetrics() {
       <dl>
         {metrics.map((metric, index) => (
           <div key={metric.label}>
+            <dt>
+              <span aria-hidden="true">0{index + 1}</span>
+              {metric.label}
+            </dt>
             <dd aria-label={metric.accessibleValue}>
               <span aria-hidden="true">
                 {formatMetric(values[index] ?? 0, metric)}
               </span>
             </dd>
-            <dt>{metric.label}</dt>
           </div>
         ))}
       </dl>

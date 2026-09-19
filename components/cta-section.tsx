@@ -3,14 +3,27 @@ import { ArrowRight } from "lucide-react";
 
 import { siteConfig, whatsappUrl } from "@/lib/site-config";
 
-export default function CtaSection() {
+type CtaSectionProps = Readonly<{
+  variant?: "default" | "home";
+}>;
+
+export default function CtaSection({ variant = "default" }: CtaSectionProps) {
   const briefingUrl = whatsappUrl(
     "Olá! Vim pelo site da Tivix e quero conversar sobre um projeto.",
   );
+  const isHome = variant === "home";
 
   return (
-    <section className="cta-shell">
-      <div className="cta-panel">
+    <section className={`cta-shell${isHome ? " cta-shell--home" : ""}`}>
+      <div className={`cta-panel${isHome ? " cta-panel--home" : ""}`}>
+        {isHome ? (
+          <div className="cta-blueprint" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
+        ) : null}
         <div className="cta-copy">
           <p className="eyebrow">Vamos conversar</p>
           <h2>Vamos construir o que precisa funcionar.</h2>

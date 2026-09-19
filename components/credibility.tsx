@@ -23,6 +23,10 @@ const technologies = [
 export default function Credibility() {
   return (
     <section id="sobre" className="founder-band scroll-mt-24">
+      <div className="founder-band-signal" aria-hidden="true">
+        <span />
+        <span />
+      </div>
       <div className="founder-band-inner">
         <p className="editorial-kicker">Tivix Technologies / desde 2022</p>
         <div className="founder-statement">
@@ -48,7 +52,11 @@ export default function Credibility() {
           </div>
         </div>
 
-        <ul className="founder-principles" aria-label="Princípios de trabalho">
+        <ul
+          className="founder-principles"
+          aria-label="Princípios de trabalho"
+          tabIndex={0}
+        >
           {principles.map((principle, index) => (
             <li key={principle}>
               <span>0{index + 1}</span>

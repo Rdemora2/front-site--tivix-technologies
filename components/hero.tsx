@@ -48,14 +48,20 @@ export default function Hero() {
           </div>
 
           <div className="hero-machine" aria-hidden="true">
+            <div className="hero-machine-grid" />
+            <div className="hero-machine-axis hero-machine-axis--horizontal" />
+            <div className="hero-machine-axis hero-machine-axis--vertical" />
             <div className="hero-machine-orbit hero-machine-orbit--outer" />
             <div className="hero-machine-orbit hero-machine-orbit--inner" />
             <div className="hero-machine-beam" />
+            <span className="hero-machine-node hero-machine-node--one" />
+            <span className="hero-machine-node hero-machine-node--two" />
+            <span className="hero-machine-node hero-machine-node--three" />
             <div className="hero-symbol-wrap">
               <Image
                 src={tivixSymbol}
                 alt=""
-                priority
+                loading="eager"
                 sizes="(max-width: 768px) 210px, 360px"
                 className="hero-symbol"
               />
