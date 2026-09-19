@@ -18,7 +18,7 @@ export const themeInitializationScript = `
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.colorScheme = theme;
   document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
-    meta.setAttribute("content", theme === "light" ? "#f4f6f2" : "#050806");
+    meta.setAttribute("content", theme === "light" ? "#f4f7fb" : "#05070d");
   });
 
   var fontScaleKey = "${fontScaleStorageKey}";

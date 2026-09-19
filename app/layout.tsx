@@ -79,8 +79,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#050806" },
-    { media: "(prefers-color-scheme: light)", color: "#f4f6f2" },
+    { media: "(prefers-color-scheme: dark)", color: "#05070d" },
+    { media: "(prefers-color-scheme: light)", color: "#f4f7fb" },
   ],
   colorScheme: "dark light",
 };
@@ -122,7 +122,7 @@ export default function RootLayout({
       className={`${inter.variable} scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen bg-[#050806] font-sans text-slate-100 antialiased">
+      <body className="min-h-screen bg-[#05070d] font-sans text-slate-100 antialiased">
         <Script
           id="tivix-theme"
           strategy="beforeInteractive"

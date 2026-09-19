@@ -120,7 +120,7 @@ export default function ContatoClient() {
 
   return (
     <section className="contact-page relative overflow-hidden pb-20 pt-36 sm:pb-28 sm:pt-44">
-      <div className="absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(circle_at_50%_0%,rgba(139,240,207,0.11),transparent_62%)]" />
+      <div className="absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(circle_at_50%_0%,rgba(121,173,255,0.11),transparent_62%)]" />
       <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <div>
           <p className="eyebrow">Vamos conversar</p>
@@ -142,7 +142,7 @@ export default function ContatoClient() {
                   key={step}
                   className="flex gap-3 text-sm leading-6 text-slate-300"
                 >
-                  <span className="grid size-6 shrink-0 place-items-center rounded-full bg-[#8bf0cf]/10 text-[0.7rem] font-bold text-[#8bf0cf]">
+                  <span className="grid size-6 shrink-0 place-items-center rounded-full bg-[#79adff]/10 text-[0.7rem] font-bold text-[#79adff]">
                     {index + 1}
                   </span>
                   {step}
@@ -179,10 +179,10 @@ export default function ContatoClient() {
           </div>
         </div>
 
-        <div className="contact-form-panel rounded-[2rem] border border-white/[0.09] bg-[#0a0f0d] p-6 shadow-2xl sm:p-9">
+        <div className="contact-form-panel rounded-[2rem] border border-white/[0.09] bg-[#0a0f18] p-6 shadow-2xl sm:p-9">
           <div className="flex items-center justify-between gap-4 border-b border-white/[0.07] pb-6">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#8bf0cf]">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#79adff]">
                 Briefing inicial
               </p>
               <h2 className="mt-2 text-2xl font-semibold text-white">
@@ -254,7 +254,7 @@ export default function ContatoClient() {
             </p>
             {opened ? (
               <p
-                className="flex items-center gap-2 text-sm text-[#8bf0cf]"
+                className="flex items-center gap-2 text-sm text-[#79adff]"
                 role="status"
                 aria-live="polite"
               >

@@ -24,7 +24,7 @@ export default async function OpenGraphImage() {
         padding: 72,
         color: "#f8fafc",
         background:
-          "radial-gradient(circle at 84% 22%, rgba(139,240,207,.15), transparent 34%), linear-gradient(90deg, transparent 49.9%, rgba(255,255,255,.045) 50%, transparent 50.1%), #050806",
+          "radial-gradient(circle at 84% 22%, rgba(121,173,255,.16), transparent 34%), linear-gradient(90deg, transparent 49.9%, rgba(255,255,255,.045) 50%, transparent 50.1%), #05070d",
       }}
     >
       <div style={{ display: "flex", alignItems: "center" }}>
@@ -42,7 +42,7 @@ export default async function OpenGraphImage() {
         <span
           style={{
             fontSize: 23,
-            color: "#8bf0cf",
+            color: "#79adff",
             letterSpacing: ".12em",
             textTransform: "uppercase",
           }}

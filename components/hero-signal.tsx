@@ -122,7 +122,7 @@ export default function HeroSignal() {
           context.beginPath();
           context.moveTo(first.x, first.y);
           context.lineTo(second.x, second.y);
-          context.strokeStyle = `rgba(167, 245, 219, ${0.105 * (1 - distance / 148)})`;
+          context.strokeStyle = `rgba(122, 175, 255, ${0.12 * (1 - distance / 148)})`;
           context.lineWidth = 0.7;
           context.stroke();
         }
@@ -131,7 +131,7 @@ export default function HeroSignal() {
       for (const point of positions) {
         context.beginPath();
         context.arc(point.x, point.y, point.radius, 0, Math.PI * 2);
-        context.fillStyle = "rgba(199, 255, 236, 0.52)";
+        context.fillStyle = "rgba(169, 205, 255, 0.56)";
         context.fill();
       }
 

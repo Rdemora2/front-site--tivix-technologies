@@ -15,7 +15,7 @@ function applyTheme(theme: Theme): void {
   document
     .querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')
     .forEach((meta) => {
-      meta.content = theme === "light" ? "#f4f6f2" : "#050806";
+      meta.content = theme === "light" ? "#f4f7fb" : "#05070d";
     });
 
   try {

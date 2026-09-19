@@ -47,7 +47,7 @@ const sections = [
 export default function PrivacidadePage() {
   return (
     <section className="relative overflow-hidden pb-20 pt-36 sm:pb-28 sm:pt-44">
-      <div className="absolute inset-x-0 top-0 -z-10 h-[30rem] bg-[radial-gradient(circle_at_50%_0%,rgba(139,240,207,0.1),transparent_62%)]" />
+      <div className="absolute inset-x-0 top-0 -z-10 h-[30rem] bg-[radial-gradient(circle_at_50%_0%,rgba(121,173,255,0.1),transparent_62%)]" />
       <div className="mx-auto max-w-4xl px-5 sm:px-8">
         <p className="eyebrow">Transparência</p>
         <h1 className="text-balance text-4xl font-semibold tracking-[-0.045em] text-white sm:text-6xl">
@@ -57,7 +57,7 @@ export default function PrivacidadePage() {
           Última atualização: setembro de 2026
         </p>
 
-        <div className="privacy-panel mt-10 rounded-[2rem] border border-white/[0.08] bg-[#0a0f0d] p-6 sm:p-10">
+        <div className="privacy-panel mt-10 rounded-[2rem] border border-white/[0.08] bg-[#0a0f18] p-6 sm:p-10">
           <p className="text-base leading-7 text-slate-300">
             A Tivix trata privacidade como parte da qualidade do produto.
             Coletamos o mínimo necessário e explicamos onde cada dado é usado.
@@ -83,7 +83,7 @@ export default function PrivacidadePage() {
               escreva para{" "}
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="text-[#8bf0cf] underline underline-offset-4"
+                className="text-[#79adff] underline underline-offset-4"
               >
                 {siteConfig.contact.email}
               </a>

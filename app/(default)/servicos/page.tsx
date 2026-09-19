@@ -9,6 +9,7 @@ import Process from "@/components/process";
 import { siteConfig } from "@/lib/site-config";
 
 type ServiceDetail = Readonly<{
+  id: "produto-digital" | "engenharia-web" | "automacao" | "ia-aplicada";
   number: "01" | "02" | "03" | "04";
   icon: LucideIcon;
   title: string;
@@ -20,6 +21,7 @@ type ServiceDetail = Readonly<{
 
 const services = [
   {
+    id: "produto-digital",
     number: "01",
     icon: Globe2,
     title: "Sites e experiências digitais",
@@ -36,6 +38,7 @@ const services = [
     technologies: ["Next.js", "React", "TypeScript", "Vercel", "AWS"],
   },
   {
+    id: "engenharia-web",
     number: "02",
     icon: Braces,
     title: "Sistemas e produtos web",
@@ -52,6 +55,7 @@ const services = [
     technologies: ["Go", "Node.js", "PostgreSQL", "Redis", "AWS", "GCP"],
   },
   {
+    id: "automacao",
     number: "03",
     icon: Workflow,
     title: "Automação e integrações",
@@ -68,6 +72,7 @@ const services = [
     technologies: ["Python", "TypeScript", "n8n", "APIs", "Filas", "Webhooks"],
   },
   {
+    id: "ia-aplicada",
     number: "04",
     icon: Bot,
     title: "Inteligência artificial aplicada",
@@ -128,7 +133,7 @@ export default function ServicesPage() {
 
       <section className="service-detail-list section-shell">
         {services.map((service) => (
-          <article key={service.number} className="service-detail">
+          <article key={service.id} id={service.id} className="service-detail">
             <div className="service-detail-id">
               <span>{service.number}</span>
               <service.icon size={23} aria-hidden="true" />

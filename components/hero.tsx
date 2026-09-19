@@ -2,23 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
 
+import HeroMetrics from "@/components/hero-metrics";
 import HeroSignal from "@/components/hero-signal";
 import tivixSymbol from "@/public/images/logo-tivix-reduced.png";
 
-type Outcome = Readonly<{ value: string; label: string }>;
-
-const outcomes = [
-  { value: "6", label: "portais em uma migração" },
-  { value: "20M+", label: "requisições por mês" },
-  { value: "99,99%", label: "de uptime" },
-] as const satisfies readonly Outcome[];
-
 const disciplines = [
-  "Produto digital",
-  "Engenharia web",
-  "Automação",
-  "IA aplicada",
-] as const;
+  { label: "Produto digital", href: "/servicos#produto-digital" },
+  { label: "Engenharia web", href: "/servicos#engenharia-web" },
+  { label: "Automação", href: "/servicos#automacao" },
+  { label: "IA aplicada", href: "/servicos#ia-aplicada" },
+] as const satisfies readonly Readonly<{
+  label: string;
+  href: `/servicos#${string}`;
+}>[];
 
 export default function Hero() {
   return (
@@ -86,10 +82,15 @@ export default function Hero() {
         >
           <div className="hero-discipline-runner">
             {[...disciplines, ...disciplines].map((discipline, index) => (
-              <span key={`${discipline}-${index}`} aria-hidden={index >= 4}>
-                {discipline}
+              <Link
+                key={`${discipline.label}-${index}`}
+                href={discipline.href}
+                aria-hidden={index >= disciplines.length}
+                tabIndex={index >= disciplines.length ? -1 : undefined}
+              >
+                {discipline.label}
                 <i>↗</i>
-              </span>
+              </Link>
             ))}
           </div>
         </div>
@@ -99,17 +100,7 @@ export default function Hero() {
         className="hero-outcomes-shell"
         aria-label="Resultados em escala"
       >
-        <div className="hero-outcomes">
-          <p>Escala não é discurso.</p>
-          <dl>
-            {outcomes.map((outcome) => (
-              <div key={outcome.label}>
-                <dd>{outcome.value}</dd>
-                <dt>{outcome.label}</dt>
-              </div>
-            ))}
-          </dl>
-        </div>
+        <HeroMetrics />
       </section>
     </>
   );

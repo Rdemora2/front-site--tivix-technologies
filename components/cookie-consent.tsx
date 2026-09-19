@@ -42,7 +42,7 @@ export default function CookieConsent() {
 
   return (
     <div
-      className="cookie-banner fixed bottom-4 left-4 right-4 z-[60] mx-auto max-w-5xl rounded-3xl border border-white/10 bg-[#0b110e]/95 shadow-2xl backdrop-blur-xl"
+      className="cookie-banner fixed bottom-4 left-4 right-4 z-[60] mx-auto max-w-5xl rounded-3xl border border-white/10 bg-[#0b101a]/95 shadow-2xl backdrop-blur-xl"
       role="dialog"
       aria-label="Consentimento de cookies"
       aria-describedby="cookie-description"
@@ -82,7 +82,7 @@ export default function CookieConsent() {
             <button
               type="button"
               onClick={acceptAll}
-              className="min-h-10 rounded-full bg-[#8bf0cf] px-4 text-xs font-bold text-[#07100e] transition hover:bg-[#a8f7dd] sm:text-sm"
+              className="min-h-10 rounded-full bg-[#79adff] px-4 text-xs font-bold text-[#07101f] transition hover:bg-[#a4c8ff] sm:text-sm"
               aria-label="Aceitar todos os cookies"
             >
               Aceitar todos

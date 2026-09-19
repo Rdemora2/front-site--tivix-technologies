@@ -58,7 +58,7 @@ export default function MobileMenu() {
           />
           <div
             id="mobile-navigation"
-            className="mobile-navigation-panel absolute inset-x-4 top-[4.45rem] rounded-3xl border border-white/10 bg-[#0b110e]/95 p-4 shadow-2xl backdrop-blur-xl"
+            className="mobile-navigation-panel absolute inset-x-4 top-[4.45rem] rounded-3xl border border-white/10 bg-[#0b101a]/95 p-4 shadow-2xl backdrop-blur-xl"
           >
             <nav className="grid gap-1" aria-label="Navegação móvel">
               {navigationItems.map((item) => (
@@ -74,7 +74,7 @@ export default function MobileMenu() {
               <Link
                 href="/contato"
                 onClick={() => setOpen(false)}
-                className="mt-2 rounded-2xl bg-[#8bf0cf] px-4 py-3 text-center text-sm font-bold text-[#07100e]"
+                className="mt-2 rounded-2xl bg-[#79adff] px-4 py-3 text-center text-sm font-bold text-[#07101f]"
               >
                 Falar sobre um projeto
               </Link>

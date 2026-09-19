@@ -3,6 +3,7 @@ import { ArrowRight, Bot, Braces, Globe2, Workflow } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type Service = Readonly<{
+  id: "produto-digital" | "engenharia-web" | "automacao" | "ia-aplicada";
   icon: LucideIcon;
   number: "01" | "02" | "03" | "04";
   title: string;
@@ -12,6 +13,7 @@ type Service = Readonly<{
 
 const services = [
   {
+    id: "produto-digital",
     icon: Globe2,
     number: "01",
     title: "Sites que vendem competência",
@@ -20,6 +22,7 @@ const services = [
     outcomes: ["Estratégia e copy", "Design responsivo", "SEO e performance"],
   },
   {
+    id: "engenharia-web",
     icon: Braces,
     number: "02",
     title: "Sistemas e produtos web",
@@ -32,6 +35,7 @@ const services = [
     ],
   },
   {
+    id: "automacao",
     icon: Workflow,
     number: "03",
     title: "Automação e integrações",
@@ -44,6 +48,7 @@ const services = [
     ],
   },
   {
+    id: "ia-aplicada",
     icon: Bot,
     number: "04",
     title: "IA aplicada ao negócio",
@@ -73,25 +78,35 @@ export default function Features() {
         </div>
       </div>
 
-      <div className="service-ledger">
+      <div className="capability-system">
         {services.map((service) => (
-          <article key={service.title} className="service-ledger-row">
-            <div className="service-ledger-index">
-              <span>{service.number}</span>
-              <span className="service-ledger-icon">
+          <Link
+            key={service.id}
+            href={`/servicos#${service.id}`}
+            className="capability-module"
+          >
+            <div className="capability-module-topline">
+              <span>{service.number} / 04</span>
+              <span className="capability-module-icon">
                 <service.icon size={20} aria-hidden="true" />
               </span>
             </div>
-            <div className="service-ledger-main">
+            <div className="capability-module-copy">
               <h3>{service.title}</h3>
               <p>{service.description}</p>
             </div>
-            <ul aria-label={`Entregas de ${service.title}`}>
+            <ul
+              className="capability-module-outcomes"
+              aria-label={`Entregas de ${service.title}`}
+            >
               {service.outcomes.map((outcome) => (
                 <li key={outcome}>{outcome}</li>
               ))}
             </ul>
-          </article>
+            <span className="capability-module-action" aria-hidden="true">
+              Explorar frente <ArrowRight size={17} />
+            </span>
+          </Link>
         ))}
       </div>
     </section>
