@@ -57,7 +57,7 @@ export default function PrivacidadePage() {
           Última atualização: setembro de 2026
         </p>
 
-        <div className="mt-10 rounded-[2rem] border border-white/[0.08] bg-[#0a0f0d] p-6 sm:p-10">
+        <div className="privacy-panel mt-10 rounded-[2rem] border border-white/[0.08] bg-[#0a0f0d] p-6 sm:p-10">
           <p className="text-base leading-7 text-slate-300">
             A Tivix trata privacidade como parte da qualidade do produto.
             Coletamos o mínimo necessário e explicamos onde cada dado é usado.

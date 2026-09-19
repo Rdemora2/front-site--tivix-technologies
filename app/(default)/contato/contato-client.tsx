@@ -119,7 +119,7 @@ export default function ContatoClient() {
   };
 
   return (
-    <section className="relative overflow-hidden pb-20 pt-36 sm:pb-28 sm:pt-44">
+    <section className="contact-page relative overflow-hidden pb-20 pt-36 sm:pb-28 sm:pt-44">
       <div className="absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(circle_at_50%_0%,rgba(139,240,207,0.11),transparent_62%)]" />
       <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <div>
@@ -132,7 +132,7 @@ export default function ContatoClient() {
             Tivix ajuda a organizar o caminho.
           </p>
 
-          <div className="mt-9 rounded-3xl border border-white/[0.08] bg-white/[0.025] p-6">
+          <div className="contact-steps mt-9 rounded-3xl border border-white/[0.08] bg-white/[0.025] p-6">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
               O que acontece depois
             </p>
@@ -142,7 +142,7 @@ export default function ContatoClient() {
                   key={step}
                   className="flex gap-3 text-sm leading-6 text-slate-300"
                 >
-                  <span className="grid size-6 shrink-0 place-items-center rounded-full bg-[#8bf0cf]/10 text-[0.65rem] font-bold text-[#8bf0cf]">
+                  <span className="grid size-6 shrink-0 place-items-center rounded-full bg-[#8bf0cf]/10 text-[0.7rem] font-bold text-[#8bf0cf]">
                     {index + 1}
                   </span>
                   {step}
@@ -179,7 +179,7 @@ export default function ContatoClient() {
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-white/[0.09] bg-[#0a0f0d] p-6 shadow-2xl sm:p-9">
+        <div className="contact-form-panel rounded-[2rem] border border-white/[0.09] bg-[#0a0f0d] p-6 shadow-2xl sm:p-9">
           <div className="flex items-center justify-between gap-4 border-b border-white/[0.07] pb-6">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#8bf0cf]">

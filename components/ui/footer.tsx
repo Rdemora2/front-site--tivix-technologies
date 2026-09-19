@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site-config";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/[0.07] bg-[#040605]">
+    <footer className="site-footer border-t border-white/[0.07] bg-[#040605]">
       <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
         <div className="grid gap-10 border-b border-white/[0.07] pb-10 md:grid-cols-[1.35fr_0.65fr_0.65fr]">
           <div className="max-w-md">

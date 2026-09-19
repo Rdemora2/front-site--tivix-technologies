@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import type React from "react";
 
 import AnalyticsConsent from "@/components/analytics-consent";
@@ -7,6 +8,7 @@ import CookieConsent from "@/components/cookie-consent";
 import WhatsAppButton from "@/components/whatsapp-button";
 import Header from "@/components/ui/header";
 import { siteConfig } from "@/lib/site-config";
+import { themeInitializationScript } from "@/lib/theme";
 
 import "./css/globals.css";
 
@@ -76,8 +78,11 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#07100e",
-  colorScheme: "dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#050806" },
+    { media: "(prefers-color-scheme: light)", color: "#f4f6f2" },
+  ],
+  colorScheme: "dark light",
 };
 
 export default function RootLayout({
@@ -112,8 +117,17 @@ export default function RootLayout({
   ).replace(/</g, "\\u003c");
 
   return (
-    <html lang="pt-BR" className={`${inter.variable} scroll-smooth`}>
+    <html
+      lang="pt-BR"
+      className={`${inter.variable} scroll-smooth`}
+      suppressHydrationWarning
+    >
       <body className="min-h-screen bg-[#050806] font-sans text-slate-100 antialiased">
+        <Script
+          id="tivix-theme"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeInitializationScript }}
+        />
         <a
           href="#conteudo"
           className="fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-white px-4 py-2 text-sm font-semibold text-black transition focus:translate-y-0"

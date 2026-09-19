@@ -42,7 +42,7 @@ export default function CookieConsent() {
 
   return (
     <div
-      className="fixed bottom-4 left-4 right-4 z-[60] mx-auto max-w-5xl rounded-3xl border border-white/10 bg-[#0b110e]/95 shadow-2xl backdrop-blur-xl"
+      className="cookie-banner fixed bottom-4 left-4 right-4 z-[60] mx-auto max-w-5xl rounded-3xl border border-white/10 bg-[#0b110e]/95 shadow-2xl backdrop-blur-xl"
       role="dialog"
       aria-label="Consentimento de cookies"
       aria-describedby="cookie-description"

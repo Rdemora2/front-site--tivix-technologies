@@ -13,6 +13,9 @@ export default function MobileMenu() {
   useEffect(() => {
     if (!open) return;
 
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setOpen(false);
@@ -21,7 +24,10 @@ export default function MobileMenu() {
     };
 
     document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, [open]);
 
   return (
@@ -29,7 +35,7 @@ export default function MobileMenu() {
       <button
         ref={triggerRef}
         type="button"
-        className="grid size-11 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white"
+        className="mobile-menu-trigger grid size-11 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white"
         aria-controls="mobile-navigation"
         aria-expanded={open}
         aria-label={open ? "Fechar menu" : "Abrir menu"}
@@ -43,30 +49,38 @@ export default function MobileMenu() {
       </button>
 
       {open ? (
-        <div
-          id="mobile-navigation"
-          className="absolute inset-x-4 top-[4.45rem] rounded-3xl border border-white/10 bg-[#0b110e]/95 p-4 shadow-2xl backdrop-blur-xl"
-        >
-          <nav className="grid gap-1" aria-label="Navegação móvel">
-            {navigationItems.map((item) => (
+        <>
+          <button
+            type="button"
+            className="mobile-menu-backdrop fixed inset-0 top-[4.75rem]"
+            aria-label="Fechar navegação"
+            onClick={() => setOpen(false)}
+          />
+          <div
+            id="mobile-navigation"
+            className="mobile-navigation-panel absolute inset-x-4 top-[4.45rem] rounded-3xl border border-white/10 bg-[#0b110e]/95 p-4 shadow-2xl backdrop-blur-xl"
+          >
+            <nav className="grid gap-1" aria-label="Navegação móvel">
+              {navigationItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-2xl px-4 py-3 text-base font-medium text-slate-200 transition hover:bg-white/[0.06]"
+                >
+                  {item.label}
+                </Link>
+              ))}
               <Link
-                key={item.href}
-                href={item.href}
+                href="/contato"
                 onClick={() => setOpen(false)}
-                className="rounded-2xl px-4 py-3 text-base font-medium text-slate-200 transition hover:bg-white/[0.06]"
+                className="mt-2 rounded-2xl bg-[#8bf0cf] px-4 py-3 text-center text-sm font-bold text-[#07100e]"
               >
-                {item.label}
+                Falar sobre um projeto
               </Link>
-            ))}
-            <Link
-              href="/contato"
-              onClick={() => setOpen(false)}
-              className="mt-2 rounded-2xl bg-[#8bf0cf] px-4 py-3 text-center text-sm font-bold text-[#07100e]"
-            >
-              Falar sobre um projeto
-            </Link>
-          </nav>
-        </div>
+            </nav>
+          </div>
+        </>
       ) : null}
     </div>
   );

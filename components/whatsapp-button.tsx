@@ -22,7 +22,7 @@ export default function WhatsAppButton() {
       )}
       target="_blank"
       rel="noreferrer"
-      className={`fixed bottom-5 right-5 z-40 inline-flex min-h-12 items-center gap-2 rounded-full border border-[#8bf0cf]/25 bg-[#10241d]/95 px-4 text-sm font-bold text-[#a8f7dd] shadow-[0_16px_48px_rgba(0,0,0,0.45)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:bg-[#173026] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8bf0cf] ${
+      className={`whatsapp-float fixed bottom-5 right-5 z-40 inline-flex min-h-12 items-center gap-2 rounded-full border border-[#8bf0cf]/25 bg-[#10241d]/95 px-4 text-sm font-bold text-[#a8f7dd] shadow-[0_16px_48px_rgba(0,0,0,0.45)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:bg-[#173026] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8bf0cf] ${
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"

@@ -50,7 +50,7 @@ export default function CaseStudies({
                     alt={primaryImage.alt}
                     fill
                     sizes="(max-width: 1024px) 100vw, 62vw"
-                    className="object-cover object-top transition duration-700 group-hover:scale-[1.025]"
+                    className="case-product-image object-contain object-center transition duration-700 group-hover:scale-[1.015]"
                   />
                 ) : (
                   <div className="case-editorial-schematic">

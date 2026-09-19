@@ -25,8 +25,8 @@ export default function Brand({
         sizes={compact ? "88px" : "116px"}
         className={
           compact
-            ? "h-auto w-[5.5rem] transition duration-300 group-hover:opacity-80"
-            : "h-auto w-[6.5rem] transition duration-300 group-hover:opacity-80 sm:w-[7.25rem]"
+            ? "brand-logo h-auto w-[5.5rem] transition duration-300 group-hover:opacity-80"
+            : "brand-logo h-auto w-[6.5rem] transition duration-300 group-hover:opacity-80 sm:w-[7.25rem]"
         }
       />
     </Link>

@@ -74,7 +74,7 @@ export default async function CasePage({ params }: CasePageProps) {
               fill
               priority
               sizes="100vw"
-              className="object-cover object-top"
+              className="case-page-product-image object-contain object-center"
             />
           ) : (
             <div className="case-page-international-mark">

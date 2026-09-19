@@ -10,7 +10,7 @@ export default function CtaSection() {
 
   return (
     <section className="px-5 pb-20 pt-4 sm:px-8 sm:pb-28">
-      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-[#8bf0cf]/15 bg-[#0b1712] px-6 py-14 text-center sm:px-10 sm:py-20">
+      <div className="cta-panel relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-[#8bf0cf]/15 bg-[#0b1712] px-6 py-14 text-center sm:px-10 sm:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(139,240,207,0.16),transparent_55%)]" />
         <div className="relative mx-auto max-w-3xl">
           <p className="eyebrow">Próximo passo</p>
