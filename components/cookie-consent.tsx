@@ -52,14 +52,15 @@ export default function CookieConsent() {
           {/* Content */}
           <div className="flex-1">
             <h3 className="mb-1 text-sm font-semibold text-white sm:text-base">
-              Sua privacidade é importante
+              Sua privacidade, sua escolha
             </h3>
             <p
               id="cookie-description"
               className="text-xs sm:text-sm text-neutral-400"
             >
-              Usamos armazenamento local para sua escolha e Microsoft Clarity
-              apenas com consentimento. Leia nossa{" "}
+              Usamos apenas o necessário para o site funcionar. Com sua
+              autorização, também analisamos a navegação para melhorar sua
+              experiência. Saiba mais na{" "}
               <Link
                 href="/privacidade"
                 className="text-white underline decoration-white/40 underline-offset-4"
