@@ -1,217 +1,270 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
+import type { SubmitEvent } from "react";
+import { ArrowUpRight, CheckCircle2, Mail, MessageCircle } from "lucide-react";
+import { useState } from "react";
 
-export default function ContatoClient() {
-  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success">("idle")
+import { siteConfig, whatsappUrl } from "@/lib/site-config";
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setFormStatus("loading")
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setFormStatus("success")
-    setTimeout(() => setFormStatus("idle"), 3000)
+type ProjectType = "site" | "system" | "automation" | "ai" | "guidance";
+
+type ContactBrief = Readonly<{
+  name: string;
+  company: string | null;
+  projectType: ProjectType;
+  message: string;
+}>;
+
+type ContactFormControls = Readonly<{
+  name: HTMLInputElement;
+  company: HTMLInputElement;
+  projectType: HTMLSelectElement;
+  message: HTMLTextAreaElement;
+}>;
+
+const projectTypeLabels = {
+  site: "Site ou landing page",
+  system: "Sistema ou produto web",
+  automation: "Automação e integrações",
+  ai: "Inteligência artificial",
+  guidance: "Preciso de orientação",
+} as const satisfies { readonly [Key in ProjectType]: string };
+
+const projectTypeOptions = [
+  { value: "site", label: projectTypeLabels.site },
+  { value: "system", label: projectTypeLabels.system },
+  { value: "automation", label: projectTypeLabels.automation },
+  { value: "ai", label: projectTypeLabels.ai },
+  { value: "guidance", label: projectTypeLabels.guidance },
+] as const satisfies readonly Readonly<{ value: ProjectType; label: string }>[];
+
+const nextSteps = [
+  "Entendemos objetivo, contexto e urgência.",
+  "Avaliamos o melhor caminho técnico.",
+  "Você recebe uma proposta clara antes de qualquer execução.",
+] as const;
+
+function isProjectType(value: string): value is ProjectType {
+  return value in projectTypeLabels;
+}
+
+function readContactFormControls(
+  form: HTMLFormElement,
+): ContactFormControls | null {
+  const name = form.elements.namedItem("name");
+  const company = form.elements.namedItem("company");
+  const projectType = form.elements.namedItem("projectType");
+  const message = form.elements.namedItem("message");
+
+  if (
+    !(name instanceof HTMLInputElement) ||
+    !(company instanceof HTMLInputElement) ||
+    !(projectType instanceof HTMLSelectElement) ||
+    !(message instanceof HTMLTextAreaElement)
+  ) {
+    return null;
   }
 
+  return { name, company, projectType, message };
+}
+
+function buildWhatsappMessage(brief: ContactBrief): string {
+  return [
+    "Olá! Vim pelo site da Tivix e quero conversar sobre um projeto.",
+    "",
+    `Nome: ${brief.name}`,
+    `Empresa: ${brief.company ?? "Não informada"}`,
+    `Tipo de projeto: ${projectTypeLabels[brief.projectType]}`,
+    "",
+    "Contexto:",
+    brief.message,
+  ].join("\n");
+}
+
+export default function ContatoClient() {
+  const [opened, setOpened] = useState(false);
+
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    const elements = readContactFormControls(event.currentTarget);
+    if (!elements) return;
+
+    const projectType = elements.projectType.value;
+
+    if (!isProjectType(projectType)) {
+      elements.projectType.setCustomValidity(
+        "Selecione um tipo de projeto válido.",
+      );
+      elements.projectType.reportValidity();
+      return;
+    }
+
+    elements.projectType.setCustomValidity("");
+    const company = elements.company.value.trim();
+    const brief: ContactBrief = {
+      name: elements.name.value.trim(),
+      company: company.length > 0 ? company : null,
+      projectType,
+      message: elements.message.value.trim(),
+    };
+
+    const destination = whatsappUrl(buildWhatsappMessage(brief));
+    const whatsappWindow = window.open(
+      destination,
+      "_blank",
+      "noopener,noreferrer",
+    );
+    if (!whatsappWindow) window.location.assign(destination);
+    setOpened(true);
+  };
+
   return (
-    <main className="flex-grow">
-      <section className="relative pt-20 sm:pt-28 md:pt-32 pb-12 sm:pb-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          {/* Header */}
-          <div className="max-w-2xl mx-auto text-center pb-8 sm:pb-10">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white mb-3">
-              Entre em Contato
-            </h1>
-            <p className="text-sm sm:text-base text-neutral-400">
-              Tem um projeto em mente? Estamos prontos para transformar sua ideia em realidade.
+    <section className="contact-page relative overflow-hidden pb-20 pt-36 sm:pb-28 sm:pt-44">
+      <div className="absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(circle_at_50%_0%,rgba(121,173,255,0.11),transparent_62%)]" />
+      <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+        <div>
+          <p className="eyebrow">Vamos conversar</p>
+          <h1 className="max-w-2xl text-balance text-4xl font-semibold tracking-[-0.045em] text-white sm:text-6xl">
+            Conte onde você quer chegar.
+          </h1>
+          <p className="mt-6 max-w-xl text-base leading-7 text-slate-400 sm:text-lg">
+            Não precisa chegar com a solução pronta. Descreva o desafio e a
+            Tivix ajuda a organizar o caminho.
+          </p>
+
+          <div className="contact-steps mt-9 rounded-3xl border border-white/[0.08] bg-white/[0.025] p-6">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
+              O que acontece depois
             </p>
+            <ol className="mt-5 space-y-4">
+              {nextSteps.map((step, index) => (
+                <li
+                  key={step}
+                  className="flex gap-3 text-sm leading-6 text-slate-300"
+                >
+                  <span className="grid size-6 shrink-0 place-items-center rounded-full bg-[#79adff]/10 text-[0.7rem] font-bold text-[#79adff]">
+                    {index + 1}
+                  </span>
+                  {step}
+                </li>
+              ))}
+            </ol>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 items-start max-w-4xl mx-auto">
-            {/* Contact Info */}
-            <div className="order-2 lg:order-1">
-              <h2 className="text-lg sm:text-xl font-semibold text-white mb-5">Fale Conosco</h2>
-
-              <div className="space-y-4">
-                {/* Email */}
-                <div className="flex items-start gap-3">
-                  <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 bg-neutral-800 rounded-full flex items-center justify-center">
-                    <svg
-                      className="w-4 h-4 sm:w-5 sm:h-5 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-semibold text-neutral-200 mb-0.5">E-mail</h3>
-                    <a
-                      href="mailto:contato@tivix.com.br"
-                      className="text-xs sm:text-sm text-neutral-400 hover:text-white transition duration-300"
-                    >
-                      contato@tivix.com.br
-                    </a>
-                  </div>
-                </div>
-
-                {/* WhatsApp */}
-                <div className="flex items-start gap-3">
-                  <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 bg-emerald-600/20 rounded-full flex items-center justify-center">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-semibold text-neutral-200 mb-0.5">WhatsApp</h3>
-                    <a
-                      href="https://wa.me/5511999999999"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs sm:text-sm text-neutral-400 hover:text-emerald-400 transition duration-300"
-                    >
-                      +55 (11) 99999-9999
-                    </a>
-                  </div>
-                </div>
-
-                {/* Location */}
-                <div className="flex items-start gap-3">
-                  <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 bg-neutral-800 rounded-full flex items-center justify-center">
-                    <svg
-                      className="w-4 h-4 sm:w-5 sm:h-5 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xs sm:text-sm font-semibold text-neutral-200 mb-0.5">Localização</h3>
-                    <p className="text-xs sm:text-sm text-neutral-400">São Paulo, SP - Brasil</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* CTA WhatsApp */}
-              <div className="mt-6">
-                <a
-                  href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os serviços da Tivix."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-flex w-full items-center justify-center gap-2 px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-medium text-white bg-emerald-600 hover:bg-emerald-500 rounded-full transition-all duration-500"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                  Conversar pelo WhatsApp
-                </a>
-              </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="order-1 lg:order-2">
-              <div className="bg-neutral-900/50 border border-neutral-800 p-5 sm:p-6 rounded-xl sm:rounded-2xl">
-                <h2 className="text-lg sm:text-xl font-semibold text-white mb-5">Envie uma Mensagem</h2>
-
-                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
-                  <div>
-                    <label htmlFor="name" className="block text-[10px] sm:text-xs font-medium text-neutral-300 mb-1">
-                      Nome completo
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      className="w-full bg-neutral-800/50 border border-neutral-700 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-white placeholder-neutral-500 focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all duration-300"
-                      placeholder="Seu nome"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-[10px] sm:text-xs font-medium text-neutral-300 mb-1">
-                      E-mail
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full bg-neutral-800/50 border border-neutral-700 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-white placeholder-neutral-500 focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all duration-300"
-                      placeholder="seu@email.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="subject" className="block text-[10px] sm:text-xs font-medium text-neutral-300 mb-1">
-                      Assunto
-                    </label>
-                    <select
-                      id="subject"
-                      name="subject"
-                      required
-                      className="w-full bg-neutral-800/50 border border-neutral-700 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-white focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all duration-300"
-                    >
-                      <option value="">Selecione um assunto</option>
-                      <option value="orcamento">Solicitar Orçamento</option>
-                      <option value="web">Desenvolvimento Web</option>
-                      <option value="ia">Inteligência Artificial</option>
-                      <option value="automacao">Automação de Processos</option>
-                      <option value="outros">Outros</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-[10px] sm:text-xs font-medium text-neutral-300 mb-1">
-                      Mensagem
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={3}
-                      required
-                      className="w-full bg-neutral-800/50 border border-neutral-700 rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-white placeholder-neutral-500 focus:border-neutral-500 focus:ring-1 focus:ring-neutral-500 transition-all duration-300 resize-none"
-                      placeholder="Conte-nos sobre seu projeto..."
-                    ></textarea>
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={formStatus === "loading"}
-                    className="w-full py-2.5 sm:py-3 bg-white text-black text-xs sm:text-sm font-medium rounded-full transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] disabled:opacity-50"
-                  >
-                    {formStatus === "loading"
-                      ? "Enviando..."
-                      : formStatus === "success"
-                        ? "Enviado!"
-                        : "Enviar Mensagem"}
-                  </button>
-                </form>
-              </div>
-            </div>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            <a
+              href={`mailto:${siteConfig.contact.email}`}
+              className="contact-option"
+            >
+              <Mail size={18} aria-hidden="true" />
+              <span>
+                <small>E-mail</small>
+                {siteConfig.contact.email}
+              </span>
+            </a>
+            <a
+              href={whatsappUrl(
+                "Olá! Vim pelo site da Tivix e gostaria de conversar.",
+              )}
+              target="_blank"
+              rel="noreferrer"
+              className="contact-option"
+            >
+              <MessageCircle size={18} aria-hidden="true" />
+              <span>
+                <small>WhatsApp</small>
+                {siteConfig.contact.whatsappLabel}
+              </span>
+            </a>
           </div>
         </div>
-      </section>
-    </main>
-  )
+
+        <div className="contact-form-panel rounded-[2rem] border border-white/[0.09] bg-[#0a0f18] p-6 shadow-2xl sm:p-9">
+          <div className="flex items-center justify-between gap-4 border-b border-white/[0.07] pb-6">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#79adff]">
+                Briefing inicial
+              </p>
+              <h2 className="mt-2 text-2xl font-semibold text-white">
+                Sobre o seu projeto
+              </h2>
+            </div>
+            <ArrowUpRight
+              size={22}
+              className="text-slate-600"
+              aria-hidden="true"
+            />
+          </div>
+
+          <form onSubmit={handleSubmit} className="mt-7 grid gap-5">
+            <div className="grid gap-5 sm:grid-cols-2">
+              <label className="form-field">
+                <span>Seu nome *</span>
+                <input
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  required
+                  placeholder="Como podemos chamar você?"
+                />
+              </label>
+              <label className="form-field">
+                <span>Empresa</span>
+                <input
+                  name="company"
+                  type="text"
+                  autoComplete="organization"
+                  placeholder="Nome da empresa"
+                />
+              </label>
+            </div>
+
+            <label className="form-field">
+              <span>Tipo de projeto *</span>
+              <select name="projectType" required defaultValue="">
+                <option value="" disabled>
+                  Selecione uma opção
+                </option>
+                {projectTypeOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label className="form-field">
+              <span>Contexto do projeto *</span>
+              <textarea
+                name="message"
+                rows={6}
+                required
+                minLength={20}
+                placeholder="Qual problema precisa ser resolvido, quem usa a solução e o que seria um bom resultado?"
+              />
+            </label>
+
+            <button type="submit" className="button-primary w-full sm:w-fit">
+              Continuar no WhatsApp
+              <ArrowUpRight size={17} aria-hidden="true" />
+            </button>
+            <p className="text-xs leading-5 text-slate-600">
+              O texto será aberto no WhatsApp e nada será enviado até você
+              confirmar por lá.
+            </p>
+            {opened ? (
+              <p
+                className="flex items-center gap-2 text-sm text-[#79adff]"
+                role="status"
+                aria-live="polite"
+              >
+                <CheckCircle2 size={17} aria-hidden="true" /> Briefing aberto no
+                WhatsApp.
+              </p>
+            ) : null}
+          </form>
+        </div>
+      </div>
+    </section>
+  );
 }

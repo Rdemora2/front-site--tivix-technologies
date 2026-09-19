@@ -1,11 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-        "*.{js,ts,jsx,tsx,mdx}"
-    ],
+  content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
     extend: {
@@ -39,8 +34,8 @@ module.exports = {
         "1/1": "100%",
       },
       fontFamily: {
+        sans: ["var(--font-inter)"],
         inter: ["var(--font-inter)"],
-        "architects-daughter": ["var(--font-architects-daughter)"],
       },
       fontSize: {
         xs: "0.75rem",
@@ -90,11 +85,7 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require("@tailwindcss/forms"),
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/aspect-ratio"),
-  ],
+  plugins: [],
   future: {
     hoverOnlyWhenSupported: true,
   },

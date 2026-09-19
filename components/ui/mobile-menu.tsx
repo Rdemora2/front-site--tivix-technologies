@@ -1,80 +1,130 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect } from "react"
-import Link from "next/link"
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+import { navigationItems } from "@/lib/navigation";
 
 export default function MobileMenu() {
-  const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
+  const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
-  const trigger = useRef<HTMLButtonElement>(null)
-  const mobileNav = useRef<HTMLDivElement>(null)
-
-  // close the mobile menu on click outside
-  useEffect(() => {
-    const clickHandler = ({ target }: { target: EventTarget | null }): void => {
-      if (!mobileNav.current || !trigger.current) return
-      if (!mobileNavOpen || mobileNav.current.contains(target as Node) || trigger.current.contains(target as Node))
-        return
-      setMobileNavOpen(false)
+  const closeMenu = useCallback((restoreFocus = true): void => {
+    setOpen(false);
+    if (restoreFocus) {
+      window.requestAnimationFrame(() => triggerRef.current?.focus());
     }
-    document.addEventListener("click", clickHandler)
-    return () => document.removeEventListener("click", clickHandler)
-  })
+  }, []);
 
-  // close the mobile menu if the esc key is pressed
   useEffect(() => {
-    const keyHandler = ({ keyCode }: { keyCode: number }): void => {
-      if (!mobileNavOpen || keyCode !== 27) return
-      setMobileNavOpen(false)
-    }
-    document.addEventListener("keydown", keyHandler)
-    return () => document.removeEventListener("keydown", keyHandler)
-  })
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const focusableElements = Array.from(
+      panelRef.current?.querySelectorAll<HTMLElement>("a[href], button") ?? [],
+    );
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements.at(-1);
+    const focusFrame = window.requestAnimationFrame(() =>
+      firstFocusable?.focus(),
+    );
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeMenu();
+        return;
+      }
+      if (event.key !== "Tab" || focusableElements.length === 0) return;
+
+      if (event.shiftKey && document.activeElement === firstFocusable) {
+        event.preventDefault();
+        lastFocusable?.focus();
+      } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+        event.preventDefault();
+        firstFocusable?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.cancelAnimationFrame(focusFrame);
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [closeMenu, open]);
 
   return (
     <div className="md:hidden">
-      {/* Hamburger button */}
       <button
-        ref={trigger}
-        className={`hamburger ${mobileNavOpen && "active"}`}
-        aria-controls="mobile-nav"
-        aria-expanded={mobileNavOpen}
-        aria-label="Abrir menu de navegação"
-        onClick={() => setMobileNavOpen(!mobileNavOpen)}
+        ref={triggerRef}
+        type="button"
+        className="mobile-menu-trigger grid size-11 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white"
+        aria-controls="mobile-navigation"
+        aria-expanded={open}
+        aria-label={open ? "Fechar menu" : "Abrir menu"}
+        onClick={() => {
+          if (open) closeMenu();
+          else setOpen(true);
+        }}
       >
-        <span className="sr-only">Menu</span>
-        <svg
-          className="w-6 h-6 fill-current text-gray-300 hover:text-gray-200 transition duration-150 ease-in-out"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect y="4" width="24" height="2" rx="1" />
-          <rect y="11" width="24" height="2" rx="1" />
-          <rect y="18" width="24" height="2" rx="1" />
-        </svg>
+        {open ? (
+          <X size={20} aria-hidden="true" />
+        ) : (
+          <Menu size={20} aria-hidden="true" />
+        )}
       </button>
 
-      {/* Mobile navigation - Simplificado - apenas link Entrar */}
-      <nav
-        id="mobile-nav"
-        ref={mobileNav}
-        className="absolute top-full z-20 left-0 w-full px-4 sm:px-6 overflow-hidden transition-all duration-300 ease-in-out"
-        style={
-          mobileNavOpen ? { maxHeight: mobileNav.current?.scrollHeight, opacity: 1 } : { maxHeight: 0, opacity: 0.8 }
-        }
-      >
-        <ul className="bg-gray-900/95 backdrop-blur-sm px-4 py-4 rounded-lg mt-2">
-          <li>
-            <Link
-              href="/signin"
-              className="flex font-medium w-full text-gray-300 hover:text-white py-2 justify-center transition-colors duration-200"
-              onClick={() => setMobileNavOpen(false)}
+      {open ? (
+        <>
+          <button
+            type="button"
+            className="mobile-menu-backdrop fixed inset-0 top-[4.75rem]"
+            aria-label="Fechar navegação"
+            tabIndex={-1}
+            onClick={() => closeMenu()}
+          />
+          <div
+            ref={panelRef}
+            id="mobile-navigation"
+            className="mobile-navigation-panel absolute inset-x-4 top-[4.45rem] rounded-3xl border border-white/10 bg-[#0b101a]/95 p-4 shadow-2xl backdrop-blur-xl"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navegação móvel"
+          >
+            <button
+              type="button"
+              className="mobile-navigation-close"
+              aria-label="Fechar navegação"
+              onClick={() => closeMenu()}
             >
-              Entrar
-            </Link>
-          </li>
-        </ul>
-      </nav>
+              <span>Fechar</span>
+              <X size={18} aria-hidden="true" />
+            </button>
+            <nav className="grid gap-1" aria-label="Navegação móvel">
+              {navigationItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => closeMenu(false)}
+                  className="rounded-2xl px-4 py-3 text-base font-medium text-slate-200 transition hover:bg-white/[0.06]"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link
+                href="/contato"
+                onClick={() => closeMenu(false)}
+                className="mt-2 rounded-2xl bg-[#79adff] px-4 py-3 text-center text-sm font-bold text-[#07101f]"
+              >
+                Falar sobre um projeto
+              </Link>
+            </nav>
+          </div>
+        </>
+      ) : null}
     </div>
-  )
+  );
 }

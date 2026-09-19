@@ -1,105 +1,84 @@
-"use client"
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-import { useState, useEffect, useRef } from "react"
+const principles = [
+  "Contato direto com a liderança técnica",
+  "Arquitetura proporcional ao problema",
+  "Segurança e observabilidade desde o início",
+  "Documentação para o produto não depender de uma pessoa",
+] as const;
+
+const technologies = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Go",
+  "Python",
+  "PostgreSQL",
+  "AWS",
+  "GCP",
+  "LLMs / RAG",
+] as const;
 
 export default function Credibility() {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.2 },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
-  const techStack = [
-    "AWS",
-    "Google Cloud",
-    "React",
-    "Next.js",
-    "Node.js",
-    "TypeScript",
-    "Python",
-    "PostgreSQL",
-    "MongoDB",
-    "OpenAI",
-    "Docker",
-    "Kubernetes",
-  ]
-
   return (
-    <section ref={sectionRef} className="relative py-12 sm:py-16 border-t border-neutral-900 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-neutral-950 to-black pointer-events-none" />
-
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
-        <div
-          className={`text-center mb-8 sm:mb-10 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h2 className="text-sm sm:text-base md:text-lg font-medium tracking-tight text-neutral-400 mb-1.5 text-balance">
-            Especialistas em <span className="text-white">AWS</span> e <span className="text-white">GCP</span> com
-            experiência internacional
+    <section id="sobre" className="founder-band scroll-mt-24">
+      <div className="founder-band-signal" aria-hidden="true">
+        <span />
+        <span />
+      </div>
+      <div className="founder-band-inner">
+        <p className="editorial-kicker">Tivix Technologies / desde 2022</p>
+        <div className="founder-statement">
+          <h2>
+            Liderança técnica
+            <span>perto do negócio.</span>
           </h2>
-          <p className="text-xs sm:text-sm text-neutral-600">Stack moderna para soluções escaláveis</p>
-        </div>
-
-        {/* Tech stack ticker */}
-        <div
-          className={`transition-all duration-1000 delay-200 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
-
-            <div className="flex gap-2.5 sm:gap-3 animate-ticker">
-              {[...techStack, ...techStack].map((tech, index) => (
-                <div
-                  key={index}
-                  className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-neutral-800/50 bg-neutral-900/30 text-neutral-500 text-[11px] sm:text-xs whitespace-nowrap transition-all duration-300 hover:border-neutral-700 hover:text-neutral-300"
-                >
-                  {tech}
-                </div>
-              ))}
-            </div>
+          <div>
+            <p>
+              Há quatro anos, a Tivix conecta estratégia, produto e engenharia
+              para construir sistemas que precisam funcionar no mundo real — em
+              projetos nacionais e internacionais.
+            </p>
+            <p>
+              A empresa atua com uma frente técnica dimensionada para cada
+              desafio e liderança direta do fundador, Roberto Moraes, da
+              arquitetura à operação.
+            </p>
+            <Link href="/sobre" className="text-link">
+              Conhecer a Tivix e o fundador
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
           </div>
         </div>
+
+        <ul
+          className="founder-principles"
+          aria-label="Princípios de trabalho"
+          tabIndex={0}
+        >
+          {principles.map((principle, index) => (
+            <li key={principle}>
+              <span>0{index + 1}</span>
+              {principle}
+            </li>
+          ))}
+        </ul>
       </div>
 
-      <style jsx>{`
-        @keyframes ticker {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-ticker {
-          animation: ticker 20s linear infinite;
-        }
-        @media (max-width: 640px) {
-          .animate-ticker {
-            animation: ticker 15s linear infinite;
-          }
-        }
-        .animate-ticker:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
+      <div
+        className="technology-marquee"
+        role="region"
+        aria-label="Tecnologias utilizadas"
+      >
+        <div>
+          {[...technologies, ...technologies].map((technology, index) => (
+            <span key={`${technology}-${index}`} aria-hidden={index >= 9}>
+              {technology}
+            </span>
+          ))}
+        </div>
+      </div>
     </section>
-  )
+  );
 }

@@ -1,49 +1,49 @@
-"use client"
+import Link from "next/link";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import LogoImage from "@/public/images/logo-tivix-full.png"
+import Brand from "@/components/brand";
+import FontScaleControl from "@/components/font-scale-control";
+import ThemeToggle from "@/components/theme-toggle";
+import MobileMenu from "@/components/ui/mobile-menu";
+import { navigationItems } from "@/lib/navigation";
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
   return (
-    <header
-      className={`fixed w-full z-50 transition-all duration-500 ${
-        scrolled ? "bg-black/80 backdrop-blur-xl border-b border-white/5" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-14 sm:h-16">
-          <Link href="/" className="relative z-10 transition-all duration-500 hover:opacity-70 hover:scale-95">
-            <Image
-              src={LogoImage || "/placeholder.svg"}
-              alt="Tivix"
-              width={100}
-              height={32}
-              priority
-              className="h-5 sm:h-6 w-auto brightness-0 invert"
-            />
-          </Link>
+    <header className="site-header fixed inset-x-0 top-0 z-50 border-b border-white/[0.06] bg-[#05070d]/78 backdrop-blur-xl">
+      <div className="mx-auto flex h-[4.75rem] max-w-7xl items-center justify-between px-5 sm:px-8">
+        <Brand priority />
 
+        <nav
+          className="hidden items-center gap-8 md:flex"
+          aria-label="Navegação principal"
+        >
+          {navigationItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-sm font-medium text-slate-400 transition hover:text-white focus-visible:text-white"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="hidden items-center gap-3 md:flex">
+          <FontScaleControl />
+          <ThemeToggle />
           <Link
-            href="/signin"
-            className="relative text-xs sm:text-sm text-neutral-400 transition-all duration-500 hover:text-white group"
+            href="/contato"
+            className="inline-flex min-h-11 items-center rounded-full bg-[#79adff] px-5 text-sm font-bold text-[#07101f] transition hover:bg-[#a4c8ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#79adff]"
           >
-            <span>Entrar</span>
-            <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-500 group-hover:w-full" />
+            Falar sobre um projeto
           </Link>
+        </div>
+
+        <div className="flex items-center gap-2 md:hidden">
+          <FontScaleControl />
+          <ThemeToggle />
+          <MobileMenu />
         </div>
       </div>
     </header>
-  )
+  );
 }
