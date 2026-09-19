@@ -1,4 +1,5 @@
-import { Bot, Braces, Globe2, Workflow } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Bot, Braces, Globe2, Workflow } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type Service = Readonly<{
@@ -55,45 +56,39 @@ const services = [
 export default function Features() {
   return (
     <section id="servicos" className="section-shell scroll-mt-24">
-      <div className="section-heading">
-        <div>
-          <p className="eyebrow">Como ajudamos</p>
-          <h2>Da presença digital à operação inteligente.</h2>
+      <div className="editorial-heading">
+        <p className="editorial-kicker">O que construímos</p>
+        <h2>
+          Do primeiro pixel
+          <span>à operação.</span>
+        </h2>
+        <div className="editorial-heading-aside">
+          <p>
+            Uma frente técnica única para transformar uma necessidade de negócio
+            em software bem desenhado, entregue e operável.
+          </p>
+          <Link href="/servicos" className="text-link">
+            Conhecer os serviços <ArrowRight size={16} aria-hidden="true" />
+          </Link>
         </div>
-        <p>
-          A Tivix combina estratégia, produto e engenharia para resolver o que
-          está travando crescimento, eficiência ou confiança.
-        </p>
       </div>
 
-      <div className="mt-12 grid gap-4 md:grid-cols-2">
+      <div className="service-ledger">
         {services.map((service) => (
-          <article key={service.title} className="service-card">
-            <div className="flex items-start justify-between gap-4">
-              <span className="grid size-11 place-items-center rounded-2xl border border-[#8bf0cf]/15 bg-[#8bf0cf]/[0.06] text-[#8bf0cf]">
+          <article key={service.title} className="service-ledger-row">
+            <div className="service-ledger-index">
+              <span>{service.number}</span>
+              <span className="service-ledger-icon">
                 <service.icon size={20} aria-hidden="true" />
               </span>
-              <span className="text-xs font-bold tracking-[0.16em] text-slate-700">
-                {service.number}
-              </span>
             </div>
-            <h3 className="mt-8 text-xl font-semibold tracking-tight text-white sm:text-2xl">
-              {service.title}
-            </h3>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-slate-400 sm:text-base">
-              {service.description}
-            </p>
-            <ul
-              className="mt-6 flex flex-wrap gap-2"
-              aria-label={`Entregas de ${service.title}`}
-            >
+            <div className="service-ledger-main">
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </div>
+            <ul aria-label={`Entregas de ${service.title}`}>
               {service.outcomes.map((outcome) => (
-                <li
-                  key={outcome}
-                  className="rounded-full border border-white/[0.08] bg-white/[0.025] px-3 py-1.5 text-xs text-slate-400"
-                >
-                  {outcome}
-                </li>
+                <li key={outcome}>{outcome}</li>
               ))}
             </ul>
           </article>

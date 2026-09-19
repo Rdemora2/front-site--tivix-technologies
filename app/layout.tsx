@@ -21,7 +21,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Tivix Technologies | Software, automação e IA aplicada",
+    default: "Tivix Technologies | Engenharia digital de alto nível",
     template: "%s | Tivix Technologies",
   },
   description: siteConfig.description,
@@ -51,13 +51,12 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title:
-      "Tivix Technologies | Software sob medida para negócios que querem avançar",
+    title: "Tivix Technologies | Ideias ambiciosas. Software à altura.",
     description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tivix Technologies | Software, automação e IA aplicada",
+    title: "Tivix Technologies | Ideias ambiciosas. Software à altura.",
     description: siteConfig.description,
   },
   alternates: { canonical: siteConfig.url },

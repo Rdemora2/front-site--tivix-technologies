@@ -37,7 +37,7 @@ export const siteConfig = {
   shortName: "Tivix",
   url: resolveSiteUrl(),
   description:
-    "Software sob medida para empresas: sites de alta conversão, sistemas web, automações e inteligência artificial aplicada.",
+    "Produtos digitais, sistemas, automações e inteligência artificial aplicada com engenharia sênior do diagnóstico à operação.",
   contact: {
     email: "robertomoraeszar@gmail.com",
     whatsappNumber: "5511973874345",

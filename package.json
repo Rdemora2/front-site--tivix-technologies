@@ -10,7 +10,7 @@
     "format:check": "prettier --check .",
     "lint": "eslint . --max-warnings=0",
     "start": "next start",
-    "type-check": "tsc --noEmit"
+    "type-check": "next typegen && tsc --noEmit --project tsconfig.check.json"
   },
   "dependencies": {
     "lucide-react": "^1.47.0",

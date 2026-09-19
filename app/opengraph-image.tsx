@@ -1,10 +1,18 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+
 import { ImageResponse } from "next/og";
 
 export const alt = "Tivix Technologies — software, automação e IA aplicada";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage() {
+  const logo = await readFile(
+    join(process.cwd(), "public", "images", "logo-tivix-full.png"),
+  );
+  const logoDataUrl = `data:image/png;base64,${logo.toString("base64")}`;
+
   return new ImageResponse(
     <div
       style={{
@@ -16,43 +24,18 @@ export default function OpenGraphImage() {
         padding: 72,
         color: "#f8fafc",
         background:
-          "radial-gradient(circle at 85% 10%, rgba(121,169,255,.28), transparent 38%), radial-gradient(circle at 15% 90%, rgba(139,240,207,.18), transparent 42%), #07100e",
+          "radial-gradient(circle at 84% 22%, rgba(139,240,207,.15), transparent 34%), linear-gradient(90deg, transparent 49.9%, rgba(255,255,255,.045) 50%, transparent 50.1%), #050806",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: 56,
-            height: 56,
-            borderRadius: 16,
-            border: "1px solid rgba(255,255,255,.2)",
-            background: "rgba(255,255,255,.06)",
-            fontSize: 18,
-            fontWeight: 800,
-          }}
-        >
-          TX
-        </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <span
-            style={{ fontSize: 28, fontWeight: 800, letterSpacing: ".2em" }}
-          >
-            TIVIX
-          </span>
-          <span
-            style={{
-              marginTop: 4,
-              fontSize: 11,
-              color: "#82918a",
-              letterSpacing: ".32em",
-            }}
-          >
-            TECHNOLOGIES
-          </span>
-        </div>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        {/* ImageResponse supports the generated URL from a static image import. */}
+        <img
+          src={logoDataUrl}
+          alt=""
+          width={172}
+          height={60}
+          style={{ objectFit: "contain" }}
+        />
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", maxWidth: 940 }}>
@@ -64,7 +47,7 @@ export default function OpenGraphImage() {
             textTransform: "uppercase",
           }}
         >
-          Software house
+          TIVIX / DIGITAL ENGINEERING
         </span>
         <span
           style={{
@@ -75,7 +58,7 @@ export default function OpenGraphImage() {
             letterSpacing: "-.035em",
           }}
         >
-          Tecnologia sob medida para negócios que precisam avançar.
+          Ideias ambiciosas. Software à altura.
         </span>
       </div>
 

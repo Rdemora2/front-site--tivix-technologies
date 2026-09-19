@@ -22,18 +22,18 @@ export default function Footer() {
             </h2>
             <ul className="mt-4 space-y-3 text-sm text-slate-500">
               <li>
-                <Link href="/#servicos" className="transition hover:text-white">
+                <Link href="/servicos" className="transition hover:text-white">
                   Serviços
                 </Link>
               </li>
               <li>
-                <Link href="/#cases" className="transition hover:text-white">
+                <Link href="/cases" className="transition hover:text-white">
                   Cases
                 </Link>
               </li>
               <li>
-                <Link href="/#processo" className="transition hover:text-white">
-                  Processo
+                <Link href="/sobre" className="transition hover:text-white">
+                  Sobre
                 </Link>
               </li>
               <li>
@@ -89,7 +89,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Tivix Technologies. Todos os direitos
             reservados.
           </p>
-          <p>São Paulo · Atendimento em todo o Brasil</p>
+          <p>Projetos no Brasil e no exterior</p>
         </div>
       </div>
     </footer>

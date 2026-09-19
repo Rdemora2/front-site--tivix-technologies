@@ -1,4 +1,5 @@
-import { CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const principles = [
   "Contato direto com a liderança técnica",
@@ -21,68 +22,49 @@ const technologies = [
 
 export default function Credibility() {
   return (
-    <section id="sobre" className="section-shell scroll-mt-24">
-      <div className="grid items-start gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
-        <div>
-          <p className="eyebrow">Sobre a Tivix</p>
-          <h2 className="max-w-xl text-balance text-3xl font-semibold tracking-[-0.035em] text-white sm:text-5xl">
-            Senioridade sem camadas desnecessárias.
+    <section id="sobre" className="founder-band scroll-mt-24">
+      <div className="founder-band-inner">
+        <p className="editorial-kicker">Uma software house de especialista</p>
+        <div className="founder-statement">
+          <h2>
+            Sem repasse.
+            <span>Sem telefone sem fio.</span>
           </h2>
-          <p className="mt-6 max-w-xl text-base leading-7 text-slate-400">
-            A Tivix é uma software house liderada por Roberto Moraes, engenheiro
-            de software e gestor de TI com atuação em produtos web, cloud,
-            streaming, automação e inteligência artificial.
-          </p>
-          <p className="mt-4 max-w-xl text-base leading-7 text-slate-400">
-            O modelo é simples: entender o negócio, escolher a tecnologia certa
-            e assumir responsabilidade pela qualidade da entrega — do primeiro
-            desenho ao comportamento em produção.
-          </p>
-          <a
-            href="https://robertomoraes.dev/pt"
-            target="_blank"
-            rel="noreferrer"
-            className="mt-7 inline-flex text-sm font-bold text-[#8bf0cf] underline decoration-[#8bf0cf]/30 underline-offset-4 transition hover:decoration-[#8bf0cf]"
-          >
-            Conhecer o portfólio técnico do fundador ↗
-          </a>
+          <div>
+            <p>
+              A Tivix é a atuação profissional de Roberto Moraes como software
+              house: estratégia, arquitetura e execução técnica conduzidas por
+              quem já colocou sistemas críticos em produção no Brasil e no
+              exterior.
+            </p>
+            <p>
+              O cliente fala diretamente com quem entende o problema, toma as
+              decisões e responde pela qualidade da entrega.
+            </p>
+            <Link href="/sobre" className="text-link">
+              Conhecer a Tivix e o fundador
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </div>
         </div>
 
-        <div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {principles.map((principle) => (
-              <div
-                key={principle}
-                className="flex gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.025] p-4"
-              >
-                <CheckCircle2
-                  size={18}
-                  className="mt-0.5 shrink-0 text-[#8bf0cf]"
-                  aria-hidden="true"
-                />
-                <p className="text-sm leading-6 text-slate-300">{principle}</p>
-              </div>
-            ))}
-          </div>
+        <ul className="founder-principles" aria-label="Princípios de trabalho">
+          {principles.map((principle, index) => (
+            <li key={principle}>
+              <span>0{index + 1}</span>
+              {principle}
+            </li>
+          ))}
+        </ul>
+      </div>
 
-          <div className="mt-5 rounded-3xl border border-white/[0.08] bg-[#0a0f0d] p-6">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
-              Stack selecionada por contexto
-            </p>
-            <ul
-              className="mt-5 flex flex-wrap gap-2"
-              aria-label="Tecnologias utilizadas"
-            >
-              {technologies.map((technology) => (
-                <li
-                  key={technology}
-                  className="rounded-full border border-white/[0.08] px-3 py-1.5 text-xs text-slate-300"
-                >
-                  {technology}
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className="technology-marquee" aria-label="Tecnologias utilizadas">
+        <div>
+          {[...technologies, ...technologies].map((technology, index) => (
+            <span key={`${technology}-${index}`} aria-hidden={index >= 9}>
+              {technology}
+            </span>
+          ))}
         </div>
       </div>
     </section>
