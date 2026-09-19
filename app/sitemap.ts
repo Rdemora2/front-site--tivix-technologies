@@ -1,38 +1,28 @@
-import type { MetadataRoute } from "next"
+import type { MetadataRoute } from "next";
+
+import { siteConfig } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://tivix.com.br"
+  const lastModified = new Date();
 
   return [
     {
-      url: baseUrl,
-      lastModified: new Date(),
+      url: siteConfig.url,
+      lastModified,
       changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/contato`,
-      lastModified: new Date(),
+      url: `${siteConfig.url}/contato`,
+      lastModified,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
-      url: `${baseUrl}/privacidade`,
-      lastModified: new Date(),
+      url: `${siteConfig.url}/privacidade`,
+      lastModified,
       changeFrequency: "yearly",
       priority: 0.3,
     },
-    {
-      url: `${baseUrl}/signin`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/signup`,
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-  ]
+  ];
 }

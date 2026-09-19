@@ -1,62 +1,97 @@
-export const metadata = {
+import type { Metadata } from "next";
+
+import { siteConfig } from "@/lib/site-config";
+
+export const metadata: Metadata = {
   title: "Política de Privacidade",
-  description: "Conheça nossa Política de Privacidade e saiba como a Tivix Technologies protege seus dados pessoais.",
-}
+  description:
+    "Como a Tivix Technologies trata dados e preferências de privacidade neste site.",
+  alternates: { canonical: `${siteConfig.url}/privacidade` },
+};
+
+type PrivacySection = Readonly<{ title: string; content: string }>;
+
+const sections = [
+  {
+    title: "1. Escopo",
+    content:
+      "Esta política descreve o tratamento de dados realizado no site institucional da Tivix Technologies. Ela não substitui contratos ou avisos específicos de projetos desenvolvidos para clientes.",
+  },
+  {
+    title: "2. Contato e briefing",
+    content:
+      "O briefing do site organiza as informações no seu navegador e abre uma conversa no WhatsApp. Nada é enviado pela Tivix antes de você confirmar o envio no próprio WhatsApp. A partir daí, o tratamento também segue os termos e a política dessa plataforma.",
+  },
+  {
+    title: "3. Métricas de navegação",
+    content:
+      "O Microsoft Clarity só é carregado quando você escolhe aceitar cookies analíticos. Ele pode registrar dados técnicos e de interação, como dispositivo, navegador, páginas acessadas e forma de uso, para ajudar a melhorar a experiência do site.",
+  },
+  {
+    title: "4. Armazenamento local",
+    content:
+      "Guardamos no seu navegador apenas a preferência de consentimento. Você pode apagar essa informação nas configurações do navegador e fazer uma nova escolha em uma visita futura.",
+  },
+  {
+    title: "5. Finalidade e retenção",
+    content:
+      "Dados enviados voluntariamente são usados para responder à sua solicitação, avaliar o projeto e manter o relacionamento comercial. Eles são mantidos somente pelo tempo necessário para essas finalidades ou para cumprir obrigações legais.",
+  },
+  {
+    title: "6. Seus direitos",
+    content:
+      "Nos termos da LGPD, você pode solicitar confirmação de tratamento, acesso, correção, eliminação quando aplicável e informações sobre compartilhamento. Também pode revogar o consentimento para dados tratados com essa base legal.",
+  },
+] as const satisfies readonly PrivacySection[];
 
 export default function PrivacidadePage() {
   return (
-    <main className="flex-grow">
-      <section className="relative pt-20 sm:pt-28 md:pt-32 pb-12 sm:pb-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          {/* Header */}
-          <div className="text-center pb-8 sm:pb-10">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-white mb-3">
-              Política de Privacidade
-            </h1>
-            <p className="text-xs sm:text-sm text-neutral-400">Última atualização: Janeiro de 2026</p>
-          </div>
+    <section className="relative overflow-hidden pb-20 pt-36 sm:pb-28 sm:pt-44">
+      <div className="absolute inset-x-0 top-0 -z-10 h-[30rem] bg-[radial-gradient(circle_at_50%_0%,rgba(139,240,207,0.1),transparent_62%)]" />
+      <div className="mx-auto max-w-4xl px-5 sm:px-8">
+        <p className="eyebrow">Transparência</p>
+        <h1 className="text-balance text-4xl font-semibold tracking-[-0.045em] text-white sm:text-6xl">
+          Política de Privacidade
+        </h1>
+        <p className="mt-5 text-sm text-slate-500">
+          Última atualização: setembro de 2026
+        </p>
 
-          {/* Content */}
-          <div className="bg-neutral-900/50 border border-neutral-800 rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 space-y-6 sm:space-y-8">
-            {[
-              {
-                title: "1. Introdução",
-                content:
-                  "A Tivix Technologies está comprometida em proteger sua privacidade. Esta Política explica como coletamos, usamos e protegemos suas informações.",
-              },
-              {
-                title: "2. Informações Coletadas",
-                content:
-                  "Coletamos informações de contato (nome, e-mail, telefone), dados técnicos (IP, navegador) e utilizamos cookies para melhorar sua experiência.",
-              },
-              {
-                title: "3. Uso das Informações",
-                content:
-                  "Utilizamos suas informações para responder solicitações, enviar comunicações (com consentimento), melhorar nossos serviços e cumprir obrigações legais.",
-              },
-              {
-                title: "4. Cookies",
-                content:
-                  "Utilizamos cookies essenciais para funcionamento do site e cookies analíticos (Microsoft Clarity) para entender como você usa nosso site.",
-              },
-              {
-                title: "5. Seus Direitos (LGPD)",
-                content:
-                  "Você tem direito a acessar, corrigir, excluir seus dados e revogar consentimento. Entre em contato através do e-mail privacidade@tivix.com.br.",
-              },
-              {
-                title: "6. Contato",
-                content: "Para dúvidas sobre esta política, entre em contato: privacidade@tivix.com.br",
-              },
-            ].map((section, i) => (
-              <div key={i}>
-                <h2 className="text-sm sm:text-base font-semibold text-white mb-2">{section.title}</h2>
-                <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">{section.content}</p>
-              </div>
+        <div className="mt-10 rounded-[2rem] border border-white/[0.08] bg-[#0a0f0d] p-6 sm:p-10">
+          <p className="text-base leading-7 text-slate-300">
+            A Tivix trata privacidade como parte da qualidade do produto.
+            Coletamos o mínimo necessário e explicamos onde cada dado é usado.
+          </p>
+
+          <div className="mt-9 space-y-8">
+            {sections.map((section) => (
+              <section key={section.title}>
+                <h2 className="text-lg font-semibold text-white">
+                  {section.title}
+                </h2>
+                <p className="mt-2 text-sm leading-7 text-slate-400">
+                  {section.content}
+                </p>
+              </section>
             ))}
           </div>
+
+          <div className="mt-10 border-t border-white/[0.08] pt-7">
+            <h2 className="text-lg font-semibold text-white">7. Contato</h2>
+            <p className="mt-2 text-sm leading-7 text-slate-400">
+              Para dúvidas ou solicitações relacionadas a dados pessoais,
+              escreva para{" "}
+              <a
+                href={`mailto:${siteConfig.contact.email}`}
+                className="text-[#8bf0cf] underline underline-offset-4"
+              >
+                {siteConfig.contact.email}
+              </a>
+              .
+            </p>
+          </div>
         </div>
-      </section>
-    </main>
-  )
+      </div>
+    </section>
+  );
 }

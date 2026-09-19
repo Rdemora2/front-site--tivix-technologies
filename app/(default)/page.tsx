@@ -1,41 +1,48 @@
-export const metadata = {
-  title: "Tivix Technologies | Desenvolvimento Full Stack, IA e Automação",
-  description:
-    "Engenharia de software para empresas. Sistemas web robustos com React e Node.js, soluções de IA com LLMs e automação de processos. São Paulo.",
-  alternates: {
-    canonical: "https://tivix.com.br/",
-  },
-  openGraph: {
-    siteName: "Tivix Technologies",
-    title: "Tivix Technologies | Engenharia de Software & IA",
-    description:
-      "Transformamos código em resultados. Desenvolvimento full stack, inteligência artificial aplicada e automação de processos para empresas.",
-    url: "https://tivix.com.br/",
-    images: [
-      {
-        url: "/images/logo-tivix-banner.png",
-        width: 1200,
-        height: 630,
-        alt: "Tivix Technologies",
-      },
-    ],
-  },
-}
+import type { Metadata } from "next";
 
-import Hero from "@/components/hero"
-import Features from "@/components/features"
-import Zigzag from "@/components/zigzag"
-import Credibility from "@/components/credibility"
-import CtaSection from "@/components/cta-section"
+import CaseStudies from "@/components/case-studies";
+import Credibility from "@/components/credibility";
+import CtaSection from "@/components/cta-section";
+import Faq, { faqs } from "@/components/faq";
+import Features from "@/components/features";
+import Hero from "@/components/hero";
+import Process from "@/components/process";
+import { siteConfig } from "@/lib/site-config";
+
+export const metadata: Metadata = {
+  title: "Software, automação e IA aplicada",
+  description: siteConfig.description,
+  alternates: { canonical: siteConfig.url },
+};
 
 export default function Home() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
+  const serializedFaqSchema = JSON.stringify(faqSchema).replace(
+    /</g,
+    "\\u003c",
+  );
+
   return (
     <>
       <Hero />
       <Features />
+      <CaseStudies />
+      <Process />
       <Credibility />
-      <Zigzag />
+      <Faq />
       <CtaSection />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializedFaqSchema }}
+      />
     </>
-  )
+  );
 }

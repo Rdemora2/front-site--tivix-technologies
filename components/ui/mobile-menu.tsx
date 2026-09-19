@@ -1,80 +1,73 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect } from "react"
-import Link from "next/link"
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+
+import { navigationItems } from "@/lib/navigation";
 
 export default function MobileMenu() {
-  const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
+  const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
-  const trigger = useRef<HTMLButtonElement>(null)
-  const mobileNav = useRef<HTMLDivElement>(null)
-
-  // close the mobile menu on click outside
   useEffect(() => {
-    const clickHandler = ({ target }: { target: EventTarget | null }): void => {
-      if (!mobileNav.current || !trigger.current) return
-      if (!mobileNavOpen || mobileNav.current.contains(target as Node) || trigger.current.contains(target as Node))
-        return
-      setMobileNavOpen(false)
-    }
-    document.addEventListener("click", clickHandler)
-    return () => document.removeEventListener("click", clickHandler)
-  })
+    if (!open) return;
 
-  // close the mobile menu if the esc key is pressed
-  useEffect(() => {
-    const keyHandler = ({ keyCode }: { keyCode: number }): void => {
-      if (!mobileNavOpen || keyCode !== 27) return
-      setMobileNavOpen(false)
-    }
-    document.addEventListener("keydown", keyHandler)
-    return () => document.removeEventListener("keydown", keyHandler)
-  })
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        triggerRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open]);
 
   return (
     <div className="md:hidden">
-      {/* Hamburger button */}
       <button
-        ref={trigger}
-        className={`hamburger ${mobileNavOpen && "active"}`}
-        aria-controls="mobile-nav"
-        aria-expanded={mobileNavOpen}
-        aria-label="Abrir menu de navegação"
-        onClick={() => setMobileNavOpen(!mobileNavOpen)}
+        ref={triggerRef}
+        type="button"
+        className="grid size-11 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-white"
+        aria-controls="mobile-navigation"
+        aria-expanded={open}
+        aria-label={open ? "Fechar menu" : "Abrir menu"}
+        onClick={() => setOpen((current) => !current)}
       >
-        <span className="sr-only">Menu</span>
-        <svg
-          className="w-6 h-6 fill-current text-gray-300 hover:text-gray-200 transition duration-150 ease-in-out"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect y="4" width="24" height="2" rx="1" />
-          <rect y="11" width="24" height="2" rx="1" />
-          <rect y="18" width="24" height="2" rx="1" />
-        </svg>
+        {open ? (
+          <X size={20} aria-hidden="true" />
+        ) : (
+          <Menu size={20} aria-hidden="true" />
+        )}
       </button>
 
-      {/* Mobile navigation - Simplificado - apenas link Entrar */}
-      <nav
-        id="mobile-nav"
-        ref={mobileNav}
-        className="absolute top-full z-20 left-0 w-full px-4 sm:px-6 overflow-hidden transition-all duration-300 ease-in-out"
-        style={
-          mobileNavOpen ? { maxHeight: mobileNav.current?.scrollHeight, opacity: 1 } : { maxHeight: 0, opacity: 0.8 }
-        }
-      >
-        <ul className="bg-gray-900/95 backdrop-blur-sm px-4 py-4 rounded-lg mt-2">
-          <li>
+      {open ? (
+        <div
+          id="mobile-navigation"
+          className="absolute inset-x-4 top-[4.45rem] rounded-3xl border border-white/10 bg-[#0b110e]/95 p-4 shadow-2xl backdrop-blur-xl"
+        >
+          <nav className="grid gap-1" aria-label="Navegação móvel">
+            {navigationItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="rounded-2xl px-4 py-3 text-base font-medium text-slate-200 transition hover:bg-white/[0.06]"
+              >
+                {item.label}
+              </Link>
+            ))}
             <Link
-              href="/signin"
-              className="flex font-medium w-full text-gray-300 hover:text-white py-2 justify-center transition-colors duration-200"
-              onClick={() => setMobileNavOpen(false)}
+              href="/contato"
+              onClick={() => setOpen(false)}
+              className="mt-2 rounded-2xl bg-[#8bf0cf] px-4 py-3 text-center text-sm font-bold text-[#07100e]"
             >
-              Entrar
+              Falar sobre um projeto
             </Link>
-          </li>
-        </ul>
-      </nav>
+          </nav>
+        </div>
+      ) : null}
     </div>
-  )
+  );
 }

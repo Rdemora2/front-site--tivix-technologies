@@ -1,105 +1,90 @@
-"use client"
+import { CheckCircle2 } from "lucide-react";
 
-import { useState, useEffect, useRef } from "react"
+const principles = [
+  "Contato direto com a liderança técnica",
+  "Arquitetura proporcional ao problema",
+  "Segurança e observabilidade desde o início",
+  "Documentação para o produto não depender de uma pessoa",
+] as const;
+
+const technologies = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Go",
+  "Python",
+  "PostgreSQL",
+  "AWS",
+  "GCP",
+  "LLMs / RAG",
+] as const;
 
 export default function Credibility() {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.2 },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
-  const techStack = [
-    "AWS",
-    "Google Cloud",
-    "React",
-    "Next.js",
-    "Node.js",
-    "TypeScript",
-    "Python",
-    "PostgreSQL",
-    "MongoDB",
-    "OpenAI",
-    "Docker",
-    "Kubernetes",
-  ]
-
   return (
-    <section ref={sectionRef} className="relative py-12 sm:py-16 border-t border-neutral-900 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-neutral-950 to-black pointer-events-none" />
-
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
-        <div
-          className={`text-center mb-8 sm:mb-10 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h2 className="text-sm sm:text-base md:text-lg font-medium tracking-tight text-neutral-400 mb-1.5 text-balance">
-            Especialistas em <span className="text-white">AWS</span> e <span className="text-white">GCP</span> com
-            experiência internacional
+    <section id="sobre" className="section-shell scroll-mt-24">
+      <div className="grid items-start gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+        <div>
+          <p className="eyebrow">Sobre a Tivix</p>
+          <h2 className="max-w-xl text-balance text-3xl font-semibold tracking-[-0.035em] text-white sm:text-5xl">
+            Senioridade sem camadas desnecessárias.
           </h2>
-          <p className="text-xs sm:text-sm text-neutral-600">Stack moderna para soluções escaláveis</p>
+          <p className="mt-6 max-w-xl text-base leading-7 text-slate-400">
+            A Tivix é uma software house liderada por Roberto Moraes, engenheiro
+            de software e gestor de TI com atuação em produtos web, cloud,
+            streaming, automação e inteligência artificial.
+          </p>
+          <p className="mt-4 max-w-xl text-base leading-7 text-slate-400">
+            O modelo é simples: entender o negócio, escolher a tecnologia certa
+            e assumir responsabilidade pela qualidade da entrega — do primeiro
+            desenho ao comportamento em produção.
+          </p>
+          <a
+            href="https://robertomoraes.dev/pt"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-7 inline-flex text-sm font-bold text-[#8bf0cf] underline decoration-[#8bf0cf]/30 underline-offset-4 transition hover:decoration-[#8bf0cf]"
+          >
+            Conhecer o portfólio técnico do fundador ↗
+          </a>
         </div>
 
-        {/* Tech stack ticker */}
-        <div
-          className={`transition-all duration-1000 delay-200 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="relative overflow-hidden">
-            <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+        <div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {principles.map((principle) => (
+              <div
+                key={principle}
+                className="flex gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.025] p-4"
+              >
+                <CheckCircle2
+                  size={18}
+                  className="mt-0.5 shrink-0 text-[#8bf0cf]"
+                  aria-hidden="true"
+                />
+                <p className="text-sm leading-6 text-slate-300">{principle}</p>
+              </div>
+            ))}
+          </div>
 
-            <div className="flex gap-2.5 sm:gap-3 animate-ticker">
-              {[...techStack, ...techStack].map((tech, index) => (
-                <div
-                  key={index}
-                  className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-neutral-800/50 bg-neutral-900/30 text-neutral-500 text-[11px] sm:text-xs whitespace-nowrap transition-all duration-300 hover:border-neutral-700 hover:text-neutral-300"
+          <div className="mt-5 rounded-3xl border border-white/[0.08] bg-[#0a0f0d] p-6">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
+              Stack selecionada por contexto
+            </p>
+            <ul
+              className="mt-5 flex flex-wrap gap-2"
+              aria-label="Tecnologias utilizadas"
+            >
+              {technologies.map((technology) => (
+                <li
+                  key={technology}
+                  className="rounded-full border border-white/[0.08] px-3 py-1.5 text-xs text-slate-300"
                 >
-                  {tech}
-                </div>
+                  {technology}
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes ticker {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-ticker {
-          animation: ticker 20s linear infinite;
-        }
-        @media (max-width: 640px) {
-          .animate-ticker {
-            animation: ticker 15s linear infinite;
-          }
-        }
-        .animate-ticker:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
-  )
+  );
 }

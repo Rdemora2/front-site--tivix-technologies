@@ -1,43 +1,16 @@
-"use client"
+import type React from "react";
 
-import type React from "react"
-
-import { useEffect } from "react"
-
-import AOS from "aos"
-import "aos/dist/aos.css"
-
-import PageIllustration from "@/components/page-illustration"
-import Footer from "@/components/ui/footer"
+import Footer from "@/components/ui/footer";
 
 export default function DefaultLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  useEffect(() => {
-    AOS.init({
-      once: true,
-      disable: "phone",
-      duration: 600,
-      easing: "ease-out-sine",
-    })
-
-    return () => {
-      // Cleanup: remove event listeners do AOS
-      AOS.refresh()
-    }
-  }, []) // Adicionado array de dependências vazio
-
   return (
     <>
-      <main className="grow">
-        <PageIllustration />
-
-        {children}
-      </main>
-
+      <main id="conteudo">{children}</main>
       <Footer />
     </>
-  )
+  );
 }

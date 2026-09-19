@@ -1,16 +1,11 @@
-import type { MetadataRoute } from "next"
+import type { MetadataRoute } from "next";
+
+import { siteConfig } from "@/lib/site-config";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://tivix.com.br"
-
   return {
-    rules: [
-      {
-        userAgent: "*",
-        allow: "/",
-        disallow: ["/api/", "/signin", "/signup"],
-      },
-    ],
-    sitemap: `${baseUrl}/sitemap.xml`,
-  }
+    rules: [{ userAgent: "*", allow: "/" }],
+    sitemap: `${siteConfig.url}/sitemap.xml`,
+    host: siteConfig.url,
+  };
 }
