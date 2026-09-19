@@ -45,7 +45,7 @@ export const siteConfig = {
   },
   founder: {
     name: "Roberto Moraes",
-    portfolio: "https://robertomoraes.dev/pt",
+    portfolio: "https://robertomoraes.vercel.app",
     linkedin: "https://www.linkedin.com/in/robertomoraes/",
     github: "https://github.com/Rdemora2",
   },

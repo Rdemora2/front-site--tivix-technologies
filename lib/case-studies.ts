@@ -56,8 +56,8 @@ export const caseStudies = [
           "BandSports, BandNews TV, Arte 1, Sabor & Arte, Terra Viva e Agro+",
       },
       {
-        value: "0s",
-        label: "de downtime",
+        value: "99,99%",
+        label: "de uptime",
         detail: "Migração gradual com continuidade do serviço",
       },
       {

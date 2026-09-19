@@ -6,61 +6,55 @@ import CtaSection from "@/components/cta-section";
 import PageIntro from "@/components/page-intro";
 import { siteConfig } from "@/lib/site-config";
 
-type CareerChapter = Readonly<{
-  period: string;
-  title: string;
+type CompanyMilestone = Readonly<{
+  value: string;
+  label: string;
   description: string;
 }>;
 
-const career = [
+const companyMilestones = [
   {
-    period: "2022 — 2023",
-    title: "Base em produto digital",
+    value: "2022",
+    label: "Fundação",
     description:
-      "Desenvolvimento full stack em produtos web, trabalhando em bases reais com Vue, React, Python, Django e Docker.",
+      "O início de uma software house criada para aproximar visão de negócio e execução técnica.",
   },
   {
-    period: "2023 — 2024",
-    title: "Da aplicação à infraestrutura",
+    value: "4 anos",
+    label: "de mercado",
     description:
-      "Responsabilidade crescente por APIs, dados, cloud e publicação, com atuação direta em Go, Kotlin, Next.js, GCP e sistemas para Android TV.",
+      "Experiência acumulada em produtos digitais, sistemas, cloud, automação e inteligência artificial.",
   },
   {
-    period: "2024 — 2025",
-    title: "Arquitetura e coordenação",
+    value: "BR + exterior",
+    label: "alcance",
     description:
-      "Liderança de projetos de mídia, saúde e hospitalidade, incluindo quatro squads, sistemas de alta escala e equipes internacionais.",
+      "Projetos nacionais e internacionais em mídia, saúde, hospitalidade e operações digitais.",
   },
-  {
-    period: "2026 — agora",
-    title: "Tecnologia de ponta a ponta",
-    description:
-      "Gestão de engenharia, infraestrutura, segurança e operação sem abandonar arquitetura e implementação — a base do modelo da Tivix.",
-  },
-] as const satisfies readonly CareerChapter[];
+] as const satisfies readonly CompanyMilestone[];
 
 const operatingPrinciples = [
   {
-    title: "Proximidade real",
+    title: "Liderança próxima",
     description:
-      "O contato comercial, o diagnóstico e as decisões técnicas não passam por camadas diferentes.",
+      "Decisões de produto e arquitetura permanecem conectadas ao objetivo de negócio durante toda a entrega.",
   },
   {
-    title: "Arquitetura proporcional",
+    title: "Time orientado ao desafio",
     description:
-      "Nem complexidade ornamental, nem atalho frágil. A solução nasce do risco e do contexto do produto.",
+      "A frente técnica é organizada conforme o contexto do projeto, com responsabilidade e padrões de engenharia claros.",
   },
   {
     title: "Responsabilidade até produção",
     description:
-      "Entrega não termina no pull request: inclui publicação, observabilidade e comportamento real do sistema.",
+      "Entrega inclui publicação, observabilidade e evolução — não termina quando o código é aprovado.",
   },
 ] as const;
 
 export const metadata: Metadata = {
   title: "Sobre",
   description:
-    "Conheça a Tivix Technologies e Roberto Moraes: uma software house boutique com atuação direta em engenharia, produto, cloud e projetos internacionais.",
+    "Conheça a Tivix Technologies: software house fundada em 2022, com projetos nacionais e internacionais sob a liderança técnica de Roberto Moraes.",
   alternates: { canonical: `${siteConfig.url}/sobre` },
 };
 
@@ -71,56 +65,80 @@ export default function AboutPage() {
         index="03 / SOBRE"
         title={
           <>
-            A empresa é enxuta.
-            <span>A experiência, não.</span>
+            Tecnologia perto
+            <span>de quem decide.</span>
           </>
         }
-        description="A Tivix é a software house de Roberto Moraes. Um modelo boutique para empresas que querem acesso direto à senioridade — da conversa inicial ao sistema em produção."
+        description="Desde 2022, a Tivix transforma desafios de negócio em produtos digitais, sistemas e operações confiáveis — em projetos no Brasil e no exterior."
         aside={
           <p>
-            Engenharia full stack, cloud, liderança técnica e coordenação
-            internacional reunidas em uma atuação sem repasse.
+            Estratégia, design e engenharia conectados por uma liderança técnica
+            presente do diagnóstico à produção.
           </p>
         }
       />
 
       <section className="about-manifesto section-shell">
-        <p className="editorial-kicker">O modelo</p>
+        <p className="editorial-kicker">A história</p>
         <div>
           <h2>
-            Quem vende o projeto
-            <span>é quem responde por ele.</span>
+            Menos distância entre
+            <span>ideia e execução.</span>
           </h2>
           <div className="about-manifesto-copy">
             <p>
-              A Tivix não tenta parecer uma fábrica com dezenas de pessoas. O
-              valor está justamente no oposto: cada projeto tem participação
-              direta do fundador nas decisões de produto, arquitetura e
-              execução.
+              A Tivix nasceu da convicção de que projetos melhores acontecem
+              quando a liderança técnica entende o negócio, participa das
+              decisões e acompanha o resultado no mundo real.
             </p>
             <p>
-              A estrutura é individual e isso fica claro desde o início: o
-              cliente sabe exatamente quem vai analisar, construir e responder
-              pelo software.
+              Essa visão orienta a empresa desde a primeira conversa: formar a
+              frente certa para cada desafio, trabalhar com clareza e construir
+              software preparado para continuar evoluindo.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="career-section section-shell">
-        <div className="career-heading">
-          <p className="editorial-kicker">Trajetória</p>
-          <h2>Experiência que atravessa camadas.</h2>
-        </div>
-        <ol className="career-timeline">
-          {career.map((chapter) => (
-            <li key={chapter.period}>
-              <time>{chapter.period}</time>
-              <h3>{chapter.title}</h3>
-              <p>{chapter.description}</p>
-            </li>
+      <section className="company-milestones section-shell">
+        <p className="editorial-kicker">Tivix em perspectiva</p>
+        <div className="company-milestone-grid">
+          {companyMilestones.map((milestone) => (
+            <article key={milestone.label}>
+              <strong>{milestone.value}</strong>
+              <h2>{milestone.label}</h2>
+              <p>{milestone.description}</p>
+            </article>
           ))}
-        </ol>
+        </div>
+      </section>
+
+      <section className="founder-section section-shell">
+        <div>
+          <p className="editorial-kicker">Fundador e líder técnico</p>
+          <h2>Roberto Moraes</h2>
+        </div>
+        <div className="founder-profile-copy">
+          <p>
+            Engenheiro de software e gestor de tecnologia com experiência em
+            arquitetura, produtos web, cloud, streaming, Android TV, automação e
+            inteligência artificial.
+          </p>
+          <p>
+            Na Tivix, Roberto lidera a direção técnica, conecta os objetivos do
+            cliente às decisões de engenharia e preserva o padrão de qualidade
+            da estratégia à operação.
+          </p>
+          <a
+            href={siteConfig.founder.portfolio}
+            target="_blank"
+            rel="noreferrer"
+            className="text-link"
+          >
+            Ver portfólio completo
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+        </div>
       </section>
 
       <section className="operating-section section-shell">
@@ -138,15 +156,10 @@ export default function AboutPage() {
           <Link href="/cases" className="button-primary">
             Ver cases completos <ArrowRight size={17} aria-hidden="true" />
           </Link>
-          <a
-            href={siteConfig.founder.portfolio}
-            target="_blank"
-            rel="noreferrer"
-            className="hero-case-link"
-          >
-            Portfólio pessoal de Roberto
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
+          <Link href="/contato" className="hero-case-link">
+            Conversar sobre um projeto
+            <ArrowRight size={16} aria-hidden="true" />
+          </Link>
         </div>
       </section>
 

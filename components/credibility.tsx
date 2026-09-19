@@ -24,22 +24,22 @@ export default function Credibility() {
   return (
     <section id="sobre" className="founder-band scroll-mt-24">
       <div className="founder-band-inner">
-        <p className="editorial-kicker">Uma software house de especialista</p>
+        <p className="editorial-kicker">Tivix Technologies / desde 2022</p>
         <div className="founder-statement">
           <h2>
-            Sem repasse.
-            <span>Sem telefone sem fio.</span>
+            Liderança técnica
+            <span>perto do negócio.</span>
           </h2>
           <div>
             <p>
-              A Tivix é a atuação profissional de Roberto Moraes como software
-              house: estratégia, arquitetura e execução técnica conduzidas por
-              quem já colocou sistemas críticos em produção no Brasil e no
-              exterior.
+              Há quatro anos, a Tivix conecta estratégia, produto e engenharia
+              para construir sistemas que precisam funcionar no mundo real — em
+              projetos nacionais e internacionais.
             </p>
             <p>
-              O cliente fala diretamente com quem entende o problema, toma as
-              decisões e responde pela qualidade da entrega.
+              A empresa atua com uma frente técnica dimensionada para cada
+              desafio e liderança direta do fundador, Roberto Moraes, da
+              arquitetura à operação.
             </p>
             <Link href="/sobre" className="text-link">
               Conhecer a Tivix e o fundador
@@ -58,7 +58,11 @@ export default function Credibility() {
         </ul>
       </div>
 
-      <div className="technology-marquee" aria-label="Tecnologias utilizadas">
+      <div
+        className="technology-marquee"
+        role="region"
+        aria-label="Tecnologias utilizadas"
+      >
         <div>
           {[...technologies, ...technologies].map((technology, index) => (
             <span key={`${technology}-${index}`} aria-hidden={index >= 9}>
