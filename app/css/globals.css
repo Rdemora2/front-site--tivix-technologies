@@ -612,22 +612,19 @@ html[data-theme="light"] .theme-toggle-moon {
 
 .hero-machine-status {
   position: absolute;
-  bottom: 15%;
-  left: 4%;
+  bottom: -1%;
+  left: 50%;
   display: flex;
   min-height: 2rem;
-  padding: 0.5rem 0.72rem;
+  padding: 0.45rem 0.6rem;
   align-items: center;
   gap: 0.55rem;
-  border: 1px solid rgba(121, 173, 255, 0.14);
-  border-radius: 999px;
-  background: rgba(5, 7, 13, 0.82);
   color: #a6b3c2;
   font-size: 0.72rem;
   letter-spacing: 0.11em;
   text-transform: uppercase;
+  transform: translateX(-50%);
   white-space: nowrap;
-  backdrop-filter: blur(12px);
 }
 
 .hero-machine-status span {
@@ -1396,6 +1393,96 @@ html[data-theme="light"] .theme-toggle-moon {
   line-height: 1.65;
 }
 
+.cta-shell {
+  padding: 1rem 2rem clamp(4.5rem, 8vw, 7rem);
+}
+
+.cta-panel {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding: clamp(2rem, 4vw, 3.25rem);
+  grid-template-columns: minmax(0, 1.2fr) minmax(19rem, 0.65fr);
+  align-items: end;
+  gap: clamp(2rem, 7vw, 6rem);
+  border: 1px solid rgba(121, 173, 255, 0.16);
+  border-radius: 1.25rem;
+  background:
+    linear-gradient(115deg, rgba(121, 173, 255, 0.09), transparent 42%), #0b1424;
+}
+
+.cta-panel::before {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: min(38%, 28rem);
+  height: 2px;
+  background: linear-gradient(90deg, #79adff, transparent);
+  content: "";
+}
+
+.cta-copy {
+  position: relative;
+  max-width: 46rem;
+}
+
+.cta-copy .eyebrow {
+  margin-bottom: 0.85rem;
+}
+
+.cta-copy h2 {
+  max-width: 15ch;
+  color: #f5f8fc;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 590;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.cta-copy > p:last-child {
+  max-width: 40rem;
+  margin-top: 1rem;
+  color: #909dad;
+  font-size: 0.93rem;
+  line-height: 1.7;
+  text-wrap: pretty;
+}
+
+.cta-actions {
+  position: relative;
+}
+
+.cta-buttons {
+  display: grid;
+  max-width: 15rem;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.cta-buttons .button-primary,
+.cta-buttons .button-secondary {
+  width: 100%;
+}
+
+.cta-contact {
+  margin-top: 1rem;
+  color: #69788c;
+  font-size: 0.75rem;
+}
+
+.cta-contact a {
+  color: #aab7c7;
+  text-decoration: underline;
+  text-decoration-color: rgba(121, 173, 255, 0.45);
+  text-underline-offset: 0.2rem;
+}
+
+.cta-contact a:hover {
+  color: #dce7f4;
+}
+
 .case-page {
   padding-top: 4.75rem;
 }
@@ -1884,6 +1971,12 @@ html[data-theme="light"] .theme-toggle-moon {
   .process-editorial {
     grid-template-columns: 1fr;
   }
+  .cta-panel {
+    grid-template-columns: 1fr;
+  }
+  .cta-actions {
+    max-width: 32rem;
+  }
   .founder-section {
     grid-template-columns: 1fr;
   }
@@ -1949,6 +2042,25 @@ html[data-theme="light"] .theme-toggle-moon {
   }
   .hero-outcomes dt {
     max-width: 8rem;
+  }
+  .cta-shell {
+    padding: 0.5rem 1.25rem 4.5rem;
+  }
+  .cta-panel {
+    padding: 1.75rem;
+    gap: 1.75rem;
+    border-radius: 1rem;
+  }
+  .cta-copy h2 {
+    max-width: 13ch;
+    font-size: clamp(2rem, 10.5vw, 3rem);
+  }
+  .cta-buttons {
+    max-width: none;
+  }
+  .cta-buttons .button-primary,
+  .cta-buttons .button-secondary {
+    width: 100%;
   }
   .section-shell {
     padding-inline: 1.25rem;
@@ -2495,7 +2607,24 @@ html[data-theme="light"] .page-intro::after {
 
 html[data-theme="light"] .cta-panel {
   border-color: rgba(36, 95, 214, 0.2);
-  background: #e8f0fc;
+  background:
+    linear-gradient(115deg, rgba(36, 95, 214, 0.09), transparent 42%), #e8f0fc;
+}
+
+html[data-theme="light"] .cta-copy h2 {
+  color: #111824;
+}
+
+html[data-theme="light"] .cta-copy > p:last-child {
+  color: #4f5f72;
+}
+
+html[data-theme="light"] .cta-contact {
+  color: #5c6c80;
+}
+
+html[data-theme="light"] .cta-contact a {
+  color: #26384c;
 }
 
 html[data-theme="light"] .whatsapp-float {

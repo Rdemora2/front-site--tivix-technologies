@@ -38,12 +38,12 @@ export default function Process() {
         <div className="process-editorial-heading">
           <p className="editorial-kicker">Como trabalhamos</p>
           <h2>
-            Clareza antes da velocidade.
-            <span>Velocidade depois dela.</span>
+            Trabalho visível.
+            <span>Decisão técnica sem ruído.</span>
           </h2>
           <p>
-            Você sabe o que está sendo feito, por que foi priorizado e qual é o
-            próximo passo — sem perder acesso à decisão técnica.
+            Você acompanha prioridades, riscos e evolução do produto sem perder
+            acesso a quem toma as decisões técnicas.
           </p>
         </div>
 

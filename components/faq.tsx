@@ -44,7 +44,7 @@ export default function Faq() {
         <div>
           <p className="eyebrow">Perguntas frequentes</p>
           <h2 className="text-balance text-3xl font-semibold tracking-[-0.035em] text-white sm:text-4xl">
-            Clareza antes do primeiro commit.
+            O que você precisa saber antes de começar.
           </h2>
           <p className="mt-5 text-sm leading-6 text-slate-500">
             Se sua dúvida não estiver aqui, conte o contexto. Uma conversa curta
