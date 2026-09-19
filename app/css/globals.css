@@ -1346,8 +1346,8 @@ html[data-theme="light"] .theme-toggle-moon {
 
 .home-case-image {
   padding: 3rem 1rem 1rem;
-  object-fit: cover;
-  object-position: top center;
+  object-fit: contain;
+  object-position: center;
   filter: saturate(0.88) contrast(1.02);
   transition:
     filter 600ms ease,
@@ -1367,7 +1367,7 @@ html[data-theme="light"] .theme-toggle-moon {
 .home-case-card:hover .home-case-image,
 .home-case-card:focus-within .home-case-image {
   filter: saturate(1) contrast(1.04);
-  transform: scale(1.025);
+  transform: none;
 }
 
 .home-case-index {
@@ -1407,6 +1407,25 @@ html[data-theme="light"] .theme-toggle-moon {
 .home-case-card--media .home-case-copy h3,
 .home-case-card--system .home-case-copy h3 {
   font-size: clamp(2.15rem, 4vw, 3.5rem);
+}
+
+@media (min-width: 768px) {
+  .home-case-card--feature .home-case-copy {
+    container-type: inline-size;
+  }
+
+  .home-case-card--feature .home-case-copy h3 {
+    max-width: 100%;
+    font-size: clamp(2.25rem, 4vw, 3rem);
+    font-size: clamp(2.25rem, 16.5cqi, 3.6rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-case-card--feature .home-case-card-link,
+  .home-case-card--feature .home-case-visual {
+    min-height: clamp(28rem, 41vw, 32rem);
+  }
 }
 
 .home-case-copy > p:not(.case-editorial-meta):not(.home-case-highlight) {
@@ -2652,11 +2671,12 @@ html[data-theme="light"] .theme-toggle-moon {
     grid-column: span 6;
   }
   .home-case-card--feature .home-case-card-link {
-    min-height: 34rem;
-    grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+    min-height: 0;
+    grid-template-columns: 1fr;
   }
   .home-case-card--feature .home-case-visual {
-    min-height: 34rem;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
   }
   .founder-statement,
   .about-manifesto > div {
@@ -2888,7 +2908,7 @@ html[data-theme="light"] .theme-toggle-moon {
   .home-case-visual,
   .home-case-card--feature .home-case-visual {
     min-height: 0;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 7 / 5;
   }
   .home-case-copy {
     min-height: 22.5rem;
